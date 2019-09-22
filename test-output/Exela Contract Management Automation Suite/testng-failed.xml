@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Exela Contract Management Automation Suite]">
+  <test thread-count="5" name="Regression Test Cases(failed)">
+    <classes>
+      <class name="com.cm.qa.testcases.CommercialsPageTests">
+        <methods>
+          <include name="copyTransactionRateStandardTest"/>
+          <include name="editFixedFeeTest"/>
+          <include name="deleteTransactionRateVolumeTest"/>
+          <include name="tearDown"/>
+          <include name="addTimeAndMaterialModelTest"/>
+          <include name="deleteTransactionRateStandardTest"/>
+          <include name="copyMinimumBillingTest"/>
+          <include name="deleteTimeAndMaterialModelTest"/>
+          <include name="editTimeAndMaterialModelTest"/>
+          <include name="editMinimumBillingTest"/>
+          <include name="addFixedFeeTest"/>
+          <include name="setUp"/>
+          <include name="copyTransactionRateVolumeTest"/>
+          <include name="deleteFixedFeeTest"/>
+          <include name="editTransactionRateVolumeTest"/>
+          <include name="deleteMinimumBillingTest"/>
+          <include name="addTransactionRateVolumeTest"/>
+          <include name="copyFixedFeeTest"/>
+          <include name="copyTimeAndMaterialModelTest"/>
+          <include name="addMinimumBillingTest"/>
+          <include name="addTransactionRateStandardTest"/>
+          <include name="editTransactionRateStandardTest"/>
+        </methods>
+      </class> <!-- com.cm.qa.testcases.CommercialsPageTests -->
+      <class name="com.cm.qa.testcases.NotificationPageTests">
+        <methods>
+          <include name="addSimpleNotificationTest" invocation-numbers="2"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.cm.qa.testcases.NotificationPageTests -->
+      <class name="com.cm.qa.testcases.ContactPersonsPageTests">
+        <methods>
+          <include name="validateAddScreenCancelButonTest"/>
+          <include name="vrifyInvalidPhoneNumberTest"/>
+          <include name="vrifyInvalidPersonNameTest"/>
+          <include name="addContactPersonsTest" invocation-numbers="2"/>
+          <include name="setUp"/>
+          <include name="vrifyInvalidEmailTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.cm.qa.testcases.ContactPersonsPageTests -->
+      <class name="com.cm.qa.testcases.OtherCommercialTermsPageTests">
+        <methods>
+          <include name="setUp"/>
+          <include name="addLimitationOfLiabilityTest"/>
+          <include name="addTerminationTest"/>
+          <include name="tearDown"/>
+          <include name="addLatePaymentFeeTest"/>
+          <include name="addEarlyPaymentDiscountTest"/>
+        </methods>
+      </class> <!-- com.cm.qa.testcases.OtherCommercialTermsPageTests -->
+    </classes>
+  </test> <!-- Regression Test Cases(failed) -->
+</suite> <!-- Failed suite [Exela Contract Management Automation Suite] -->

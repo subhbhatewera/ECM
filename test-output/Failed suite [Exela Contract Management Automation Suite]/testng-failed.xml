@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Failed suite [Exela Contract Management Automation Suite]]">
+  <test thread-count="5" name="Regression Test Cases(failed)(failed)">
+    <classes>
+      <class name="com.cm.qa.testcases.GeneralInformationPageTests">
+        <methods>
+          <include name="setUp"/>
+          <include name="addNewCategoryTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.cm.qa.testcases.GeneralInformationPageTests -->
+    </classes>
+  </test> <!-- Regression Test Cases(failed)(failed) -->
+</suite> <!-- Failed suite [Failed suite [Exela Contract Management Automation Suite]] -->
