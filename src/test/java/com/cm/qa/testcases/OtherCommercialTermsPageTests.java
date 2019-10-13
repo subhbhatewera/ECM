@@ -1,8 +1,8 @@
 package com.cm.qa.testcases;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
@@ -31,21 +31,21 @@ public class OtherCommercialTermsPageTests extends TestBase{
 		super() ;
 	}
 
-	@BeforeMethod
+	@BeforeClass
 	public void setUp() {
 		initializeBrowser() ;
 		uName = new UsernamePage() ;
 		utills = new Utills() ;
 		otherCommercials = new OtherCommercialTermsPage() ;
 		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
-		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;
-		contractList = dashboard.gotoContractListPage() ;		
+		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;		
 	}
 
 	@Test(priority = 71, dataProvider = "cola", dataProviderClass = DataProviderClass.class)
 	public void addCOLATest(String contractTitle, String clause, String type, String indexType, String applicableFrom, String revisionFrequency, 
 			String noticePeriodValue, String noticePeriodDuration, String percentage, String status, String referenceNo,
 			String relatedReferenceNo, String reminder) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		otherCommercials.clickOnOtherCommercialTermsTab()
 		.clickOnCOLATab()
@@ -58,6 +58,7 @@ public class OtherCommercialTermsPageTests extends TestBase{
 	@Test(priority = 72, dataProvider = "incentive", dataProviderClass = DataProviderClass.class)
 	public void addIncentiveTest(String contractTitle, String clause, String referenceNo, String percentage, String type, String dateFrom, 
 			String dateTo, String status, String noticePeriodValue, String noticePeriodDuration, String reminder) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		otherCommercials.clickOnOtherCommercialTermsTab()
 		.clickOnIncentiveTab()
@@ -69,6 +70,7 @@ public class OtherCommercialTermsPageTests extends TestBase{
 	@Test(priority = 73, dataProvider = "penalty", dataProviderClass = DataProviderClass.class)
 	public void addPenaltyTest(String contractTitle, String clause, String referenceNo, String relatedReferenceNo, String percentage, String type,
 			String dateFrom, String dateTo, String status, String reminder) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		otherCommercials.clickOnOtherCommercialTermsTab()
 		.clickOnPenaltyTab()
@@ -80,6 +82,7 @@ public class OtherCommercialTermsPageTests extends TestBase{
 	@Test(priority = 74, dataProvider = "earlyPaymentDiscount", dataProviderClass = DataProviderClass.class)
 	public void addEarlyPaymentDiscountTest(String contractTitle, String clause, String referenceNo, String relatedReferenceNo, String percentage, String value,
 			String billingCycle, String dateFrom, String dateTo, String status, String reminder) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		otherCommercials.clickOnOtherCommercialTermsTab()
 		.clickOnEarlyPaymentDiscountTab()
@@ -91,6 +94,7 @@ public class OtherCommercialTermsPageTests extends TestBase{
 	@Test(priority = 75, dataProvider = "latePaymentFee", dataProviderClass = DataProviderClass.class)
 	public void addLatePaymentFeeTest(String contractTitle, String clause, String referenceNo, String relatedReferenceNo, String invoiceDate, String noticePeriodValue,
 			String noticePeriodDuration, String currency, String penaltyValue, String status, String reminder) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		otherCommercials.clickOnOtherCommercialTermsTab()
 		.clickOnLatePaymentFeeTab()
@@ -102,6 +106,7 @@ public class OtherCommercialTermsPageTests extends TestBase{
 	@Test(priority = 76, dataProvider = "termination", dataProviderClass = DataProviderClass.class)
 	public void addTerminationTest(String contractTitle, String clause, String type, String noticePeriodValue, String noticePeriodDuration, String term,
 			String status, String referenceNo, String dateFrom, String dateTo, String currency, String value, String reminder) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		otherCommercials.clickOnOtherCommercialTermsTab()
 		.clickOnTerminationTab()
@@ -112,6 +117,7 @@ public class OtherCommercialTermsPageTests extends TestBase{
 
 	@Test(priority = 77, dataProvider = "limitationofLiability", dataProviderClass = DataProviderClass.class)
 	public void addLimitationOfLiabilityTest(String contractTitle, String clause, String type, String currency, String value, String referenceNo) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		otherCommercials.clickOnOtherCommercialTermsTab()
 		.clickOnLimitationOfLiabilityTab()
@@ -120,9 +126,8 @@ public class OtherCommercialTermsPageTests extends TestBase{
 		Assert.assertEquals(utills.readSuccessMessage(), "Contract successfully updated\n"+"Operation Success");
 	}	
 
-	@AfterMethod
+	@AfterClass
 	public void tearDown() {
-		driver.close();
+		driver.quit();
 	}
-
 }

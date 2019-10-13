@@ -65,8 +65,9 @@ public class DashboardPage extends TestBase{
 	}
 
 	public DocSearchPage clickOnDosSearchLink() {
-		customVisibleWait(docSearchLink) ;
-		docSearchLink.click() ;
+		customVisibleWait(toggleIcon) ;
+		clickElement(toggleIcon);
+		clickElement(docSearchLink);
 		return new DocSearchPage() ;
 	}
 	
@@ -76,8 +77,7 @@ public class DashboardPage extends TestBase{
 	}
 
 	public NotificationPage gotoNotificationPage() {
-		customVisibleWait(notificationLink) ;
-		notificationLink.click() ;
+		clickElement(notificationLink);
 		return new NotificationPage() ;
 	}
 

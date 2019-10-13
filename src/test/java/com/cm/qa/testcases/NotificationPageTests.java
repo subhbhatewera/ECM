@@ -1,8 +1,8 @@
 package com.cm.qa.testcases;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import com.cm.qa.pages.DashboardPage;
 import com.cm.qa.pages.NotificationPage;
@@ -25,14 +25,13 @@ public class NotificationPageTests extends TestBase{
 		super() ;
 	}
 
-	@BeforeMethod
+	@BeforeClass
 	public void setUp() {
 		initializeBrowser() ;
 		uName = new UsernamePage() ;
 		utills = new Utills() ;
 		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
-		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;
-		notification = dashboard.gotoNotificationPage();
+		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;		
 	}
 
 	@Test(priority = 81, dataProvider = "addNotification", dataProviderClass = DataProviderClass.class)
@@ -40,6 +39,7 @@ public class NotificationPageTests extends TestBase{
 			String description, String reminder, String noticePeriodValue, String noticePeriodDuration, String reminderStartDate,
 			String reminderEndDate, String notificationStatus, String users, String alternateEmail, String sendCopyToEmail, 
 			String reminderFrequency) {
+		notification = dashboard.gotoNotificationPage();
 		notification.clickOnAddButton()
 		.fillNotificationForm(title, businesspartner, type, date, linkedContractInformation, description,
 				reminder, noticePeriodValue, noticePeriodDuration, reminderStartDate, reminderEndDate, 
@@ -53,6 +53,7 @@ public class NotificationPageTests extends TestBase{
 			String description, String reminder, String noticePeriodValue, String noticePeriodDuration, String reminderStartDate,
 			String reminderEndDate, String notificationStatus, String users, String alternateEmail, String sendCopyToEmail, 
 			String reminderFrequency) {
+		notification = dashboard.gotoNotificationPage();
 		notification.clickOnEditIcon(title)
 		.fillNotificationForm(newTitle, businesspartner, type, date, linkedContractInformation, description,
 				reminder, noticePeriodValue, noticePeriodDuration, reminderStartDate, reminderEndDate, 
@@ -63,14 +64,14 @@ public class NotificationPageTests extends TestBase{
 
 	@Test(priority = 84, dataProvider = "deleteNotification", dataProviderClass = DataProviderClass.class)
 	public void deleteNotificationTest(String title) {
+		notification = dashboard.gotoNotificationPage();
 		notification.clickOnDeleteIcon(title)
 		.clickOnConfirmationPopUpYesButton();
 		Assert.assertEquals(utills.readSuccessMessage(), "Notification successfully deleted!\n"+"Operation Success");
 	}
 
-	@AfterMethod
+	@AfterClass
 	public void tearDown() {
-		driver.close();
+		driver.quit();
 	}
-
 }

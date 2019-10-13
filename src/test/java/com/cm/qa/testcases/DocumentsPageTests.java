@@ -1,7 +1,7 @@
 package com.cm.qa.testcases;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
@@ -28,29 +28,29 @@ public class DocumentsPageTests extends TestBase{
 		super() ;
 	}
 
-	@BeforeMethod
+	@BeforeClass
 	public void setUp() {
 		initializeBrowser() ;
 		uName = new UsernamePage() ;
 		utills = new Utills() ;
 		document = new DocumentsPage();
 		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
-		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;
-		contractList = dashboard.gotoContractListPage() ;
+		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;		
 	}
 
 	@Test(dataProvider = "DocumentsData", dataProviderClass = DataProviderClass.class)
 	public void addDocument(String contractTitle, String contractType, String uploadDate, String signedDate, 
 			String status, String imagePath ) {
+		contractList = dashboard.gotoContractListPage() ;
 		contractList.clickOnEditContractIcon(contractTitle);
 		document.clickOnDocumentsTab()
 		.clickOnAddDocumentButton()
 		.fillDocumentForm(contractType, uploadDate, signedDate, status, imagePath) ;
 	}
 
-	@AfterMethod
+	@AfterClass
 	public void tearDown() {
-//		driver.close();
+		driver.quit();
 	}
 
 }

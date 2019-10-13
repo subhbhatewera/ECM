@@ -1,8 +1,8 @@
 package com.cm.qa.testcases;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.cm.qa.pages.PasswordPage;
@@ -22,7 +22,7 @@ public class UsernamePageTests extends TestBase {
 		super() ;
 	}
 	
-	@BeforeMethod
+	@BeforeClass
 	public void setUp() {
 		initializeBrowser() ;
 		uName = new UsernamePage() ;
@@ -43,20 +43,19 @@ public class UsernamePageTests extends TestBase {
 	}
 	
 	@Test(priority = 3)
-	public void validUsernameTest() {
-		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
-		Assert.assertTrue(pwd.validateCMImage()) ;
-	}
-	
-	@Test(priority = 4)
 	public void verifyFooterText() {
 		String footerText = uName.getFooterText() ;
 		Assert.assertEquals(footerText, prop.getProperty("footerText"));
 	}
 	
-	@AfterMethod
+	@Test(priority = 4)
+	public void validUsernameTest() {
+		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
+		Assert.assertTrue(pwd.validateCMImage()) ;
+	}	
+	
+	@AfterClass
 	public void tearDown() {
-		driver.close();
+		driver.quit();
 	}
-
 }

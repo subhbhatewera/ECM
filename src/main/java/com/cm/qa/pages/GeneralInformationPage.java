@@ -84,7 +84,7 @@ public class GeneralInformationPage extends TestBase {
 	}
 
 	public void selectCategory(String category) {
-		selectDropDownOptionWithWait(categoryDropDown, category);
+		selectDropDownOption(categoryDropDown, category);
 	}
 
 	public void openAddCategoryPopup() {

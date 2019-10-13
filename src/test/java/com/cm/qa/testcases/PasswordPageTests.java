@@ -1,8 +1,8 @@
 package com.cm.qa.testcases;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.cm.qa.pages.DashboardPage;
@@ -23,7 +23,7 @@ public class PasswordPageTests extends TestBase{
 		super() ;
 	}
 
-	@BeforeMethod
+	@BeforeClass
 	public void setUp() {
 		initializeBrowser() ;
 		uName = new UsernamePage() ;
@@ -48,21 +48,20 @@ public class PasswordPageTests extends TestBase{
 		Assert.assertEquals(utills.readErrorMessage(), "Invalid username/password or your account has been blocked\n" + 
 				"Wrong credentials") ;
 	}
-
+	
 	@Test(priority = 8)
-	public void validPasswordTest() {
-		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;
-		Assert.assertEquals(dashboard.verifyDashboardPageHeading(), "Dashboard");
-	}
-
-	@Test(priority = 9)
 	public void verifyFooterTextTest() {
 		Assert.assertEquals(pwd.getFooterText(), prop.getProperty("footerText"));
 	}
 
-	@AfterMethod
-	public void tearDown() {
-		driver.close();
-	}
+	@Test(priority = 9)
+	public void validPasswordTest() {
+		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;
+		Assert.assertEquals(dashboard.verifyDashboardPageHeading(), "Dashboard");
+	}	
 
+	@AfterClass
+	public void tearDown() {
+		driver.quit();
+	}
 }

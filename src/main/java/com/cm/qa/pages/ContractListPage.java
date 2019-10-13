@@ -41,8 +41,8 @@ public class ContractListPage extends TestBase{
 	
 	public GeneralInformationPage clickOnEditContractIcon(String contractTitle) {
 		serachContract(contractTitle);
-		WebElement element = driver.findElement(By.xpath("(//span[contains(@title,'"+contractTitle+"')]//following::i[contains(@class,'pencil')])[1]"));
-		customClickableWait(element) ;
+		sleep(2000);
+		WebElement element = driver.findElement(By.xpath("(//i[@mattooltip='Edit'])[1]"));
 		element.click() ;
 		return new GeneralInformationPage() ;
 	}

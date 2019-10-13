@@ -1,8 +1,8 @@
 package com.cm.qa.testcases;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.cm.qa.pages.ContractListPage;
@@ -30,7 +30,7 @@ public class TermPageTests extends TestBase{
 		super() ;
 	}
 
-	@BeforeMethod()
+	@BeforeClass
 	public void setUp() {
 		initializeBrowser() ;
 		uName = new UsernamePage() ;
@@ -38,13 +38,13 @@ public class TermPageTests extends TestBase{
 		term = new TermPage() ;
 		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
 		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;
-		contractList = dashboard.gotoContractListPage() ;
 	}
 
 	@Test(priority = 31, dataProvider = "termData", dataProviderClass = DataProviderClass.class)
 	public void addTermTest(String ContractTitle, String ContractType, String StartDate, String SignedDate, String EndDate,
 			String ContractTermValue, String TermDuration, String RenewalType, String NoticePeriodForRenewal, String NoticePeriodDuration,
 			String GracePeriod, String GracePeriodDuration, String Description) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(ContractTitle);
 		term.clickTermTab()
 		.fillTermForm(ContractType, StartDate, SignedDate, EndDate, ContractTermValue, TermDuration, RenewalType, NoticePeriodForRenewal, 
@@ -53,9 +53,8 @@ public class TermPageTests extends TestBase{
 		Assert.assertEquals(utills.readSuccessMessage(), "Contract successfully updated\n"+"Operation Success");
 	}
 
-	@AfterMethod
+	@AfterClass
 	public void tearDown() {
-		driver.close();
+		driver.quit();
 	}
-
 }

@@ -1,8 +1,8 @@
 package com.cm.qa.testcases;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.cm.qa.pages.CommercialsPage;
@@ -30,20 +30,20 @@ public class CommercialsPageTests extends TestBase{
 		super() ;
 	}
 
-	@BeforeMethod
+	@BeforeClass
 	public void setUp() {
 		initializeBrowser() ;
 		uName = new UsernamePage() ;
 		utills = new Utills() ;
 		commercials = new CommercialsPage();
 		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
-		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;
-		contractList = dashboard.gotoContractListPage() ;
+		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;		
 	}
 
 	@Test(priority = 41, enabled = false, dataProvider = "generalTerms", dataProviderClass = DataProviderClass.class)
 	public void addGeneralTermsTest(String contractTitle, String billingFrequency, String creditPeriodValue, String creditPeriodDuration, String billingStartDate, String billingEndDate, String billingCurrency, String clause) {
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
+		contractList = dashboard.gotoContractListPage() ;
 		commercials.clickOnCommercialsTab()
 		.fillGeneralTermsForm(billingFrequency, creditPeriodValue, creditPeriodDuration, billingStartDate, billingEndDate, billingCurrency, clause)
 		.clickOnListingScreenSaveButton();
@@ -52,6 +52,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 42, enabled = false, dataProvider = "uom", dataProviderClass = DataProviderClass.class)
 	public void addUOMTest(String contractTitle, String uomName) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTransactionRateStandardTab()
@@ -64,6 +65,7 @@ public class CommercialsPageTests extends TestBase{
 	@Test(priority = 43, enabled = false, dataProvider = "linkedOpportunity", dataProviderClass = DataProviderClass.class)
 	public void addLinkedOpportunityTest(String contractTitle, String linkedOpportunityName) {
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
+		contractList = dashboard.gotoContractListPage() ;
 		commercials.clickOnCommercialsTab()
 		.clickOnTransactionRateStandardTab()
 		.clickOnAddButton()
@@ -74,6 +76,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 44, dataProvider = "service", dataProviderClass = DataProviderClass.class)
 	public void addServiceTest(String contractTitle, String serviceName) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTransactionRateStandardTab()
@@ -85,6 +88,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 45, dataProvider = "subService", dataProviderClass = DataProviderClass.class)
 	public void addSubServiceTest(String contractTitle, String subServiceName) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTransactionRateStandardTab()
@@ -96,6 +100,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 46, dataProvider = "project", dataProviderClass = DataProviderClass.class)
 	public void addProjectTest(String contractTitle, String projectName) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTransactionRateStandardTab()
@@ -108,6 +113,7 @@ public class CommercialsPageTests extends TestBase{
 	@Test(priority = 47, enabled = false, dataProvider = "transactionRateStandard", dataProviderClass = DataProviderClass.class)
 	public void addTransactionRateStandardTest(String contractTitle, String lineItem, String currency, String rate, String UOM, String effectiveStartDate, String effectiveEndDate, String referenceNo,
 			String relatedReferenceNo, String platformsApplicable, String service, String subService, String location) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTransactionRateStandardTab()
@@ -123,6 +129,7 @@ public class CommercialsPageTests extends TestBase{
 	@Test(priority = 48, enabled = false, dataProvider = "transactionRateVolume", dataProviderClass = DataProviderClass.class)
 	public void addTransactionRateVolumeTest(String contractTitle, String lineItem, String tierType, String volumeSplit, String volumeGroupName, String lowerTier, String upperTier, String rate, String applicableFactor, String UOM, 
 			String effectiveStartDate, String effectiveEndDate, String referenceNo,	String relatedReferenceNo, String platformsApplicable, String service, String subService, String location) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTransactionRateVolumeTab()
@@ -138,6 +145,7 @@ public class CommercialsPageTests extends TestBase{
 	@Test(priority = 49, enabled = false, dataProviderClass = DataProviderClass.class)
 	public void addTimeAndMaterialModelTest(String contractTitle, String description, String tableDescription, String effectiveDate, String rate, String tableUOM, String quantity, String effectiveStartDate, String effectiveEndDate, 
 			String referenceNo,	String relatedReferenceNo, String platformsApplicable, String service, String subService, String location) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTimeAndmaterialModelTab()
@@ -152,6 +160,7 @@ public class CommercialsPageTests extends TestBase{
 	@Test(priority = 50, enabled = true, dataProvider = "fixedFee", dataProviderClass = DataProviderClass.class)
 	public void addFixedFeeTest(String contractTitle, String lineItem, String currency, String rate, String UOM, String advanceBilling, String effectiveStartDate, String effectiveEndDate, 
 			String applicablePeriod, String referenceNo, String relatedReferenceNo, String platformsApplicable, String service, String subService, String location) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnFixedFeeTab()
@@ -166,6 +175,7 @@ public class CommercialsPageTests extends TestBase{
 	@Test(priority = 51, enabled = true, dataProvider = "minimumBilling", dataProviderClass = DataProviderClass.class)
 	public void addMinimumBillingTest(String contractTitle, String lineItem, String type, String currency, String rate, String quantity, String UOM, String effectiveStartDate, String effectiveEndDate, 
 			String applicablePeriod, String referenceNo, String relatedReferenceNo, String platformsApplicable, String service, String subService, String location) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnMinimumBillingTab()
@@ -179,6 +189,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 52, enabled = true, dataProvider = "editCommercials", dataProviderClass = DataProviderClass.class)
 	public void editTransactionRateStandardTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTransactionRateStandardTab()
@@ -194,6 +205,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 53, enabled = true, dataProvider = "editCommercials", dataProviderClass = DataProviderClass.class)
 	public void copyTransactionRateStandardTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTransactionRateStandardTab()
@@ -203,6 +215,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 54, enabled = true, dataProvider = "editCommercials", dataProviderClass = DataProviderClass.class)
 	public void deleteTransactionRateStandardTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTransactionRateStandardTab()
@@ -213,6 +226,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 55, enabled = true, dataProvider = "editCommercials", dataProviderClass = DataProviderClass.class)
 	public void editTransactionRateVolumeTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTransactionRateVolumeTab()
@@ -233,6 +247,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 56, enabled = true, dataProvider = "editCommercials", dataProviderClass = DataProviderClass.class)
 	public void copyTransactionRateVolumeTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTransactionRateVolumeTab()
@@ -242,6 +257,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 57, enabled = true, dataProvider = "editCommercials", dataProviderClass = DataProviderClass.class)
 	public void deleteTransactionRateVolumeTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTransactionRateVolumeTab()
@@ -252,6 +268,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 58, enabled = true, dataProvider = "editCommercials", dataProviderClass = DataProviderClass.class)
 	public void editTimeAndMaterialModelTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTimeAndmaterialModelTab()
@@ -272,6 +289,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 59, enabled = true, dataProvider = "editCommercials", dataProviderClass = DataProviderClass.class)
 	public void copyTimeAndMaterialModelTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTimeAndmaterialModelTab()
@@ -281,6 +299,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 60, enabled = true, dataProvider = "editCommercials", dataProviderClass = DataProviderClass.class)
 	public void deleteTimeAndMaterialModelTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnTimeAndmaterialModelTab()
@@ -291,6 +310,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 61, enabled = true, dataProvider = "editCommercials", dataProviderClass = DataProviderClass.class)
 	public void editFixedFeeTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnFixedFeeTab()
@@ -306,6 +326,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 62, enabled = true, dataProvider = "editCommercials", dataProviderClass = DataProviderClass.class)
 	public void copyFixedFeeTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnFixedFeeTab()
@@ -315,6 +336,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 63, enabled = true, dataProvider = "editCommercials", dataProviderClass = DataProviderClass.class)
 	public void deleteFixedFeeTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnFixedFeeTab()
@@ -325,6 +347,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 64, enabled = true, dataProvider = "editCommercials", dataProviderClass = DataProviderClass.class)
 	public void editMinimumBillingTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnMinimumBillingTab()
@@ -340,6 +363,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 65, enabled = true, dataProvider = "editCommercials", dataProviderClass = DataProviderClass.class)
 	public void copyMinimumBillingTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnMinimumBillingTab()
@@ -349,6 +373,7 @@ public class CommercialsPageTests extends TestBase{
 
 	@Test(priority = 66, enabled = true, dataProvider = "editCommercials", dataProviderClass = DataProviderClass.class)
 	public void deleteMinimumBillingTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		commercials.clickOnCommercialsTab()
 		.clickOnMinimumBillingTab()
@@ -357,9 +382,9 @@ public class CommercialsPageTests extends TestBase{
 		Assert.assertEquals(utills.readSuccessMessage(), "Minimum Billing successfully deleted\n"+"Operation Success");
 	}
 
-	@AfterMethod
+	@AfterClass
 	public void tearDown() {
-		driver.close();
+		driver.quit();
 	}
 
 }

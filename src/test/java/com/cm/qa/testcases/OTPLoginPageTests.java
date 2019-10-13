@@ -1,8 +1,8 @@
 package com.cm.qa.testcases;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.cm.qa.pages.DashboardPage;
@@ -25,7 +25,7 @@ public class OTPLoginPageTests extends TestBase{
 		super();
 	}
 
-	@BeforeMethod
+	@BeforeClass
 	public void setUp() {
 		initializeBrowser() ;
 		uName = new UsernamePage() ;
@@ -33,7 +33,6 @@ public class OTPLoginPageTests extends TestBase{
 		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
 		otp = pwd.clickOTPLoginLink() ;
 	}
-
 
 	@Test(priority = 1)
 	public void emptyOTPTest(){
@@ -48,16 +47,14 @@ public class OTPLoginPageTests extends TestBase{
 		Assert.assertEquals(utills.readErrorMessage(), "Wrong credentials, try again.\n" + "Wrong credentilas");
 	}
 
-
 	@Test(priority = 3)
 	public void validOTPTest() {
 		dashboard = otp.OTPLogin(prop.getProperty("outlookUsername"), prop.getProperty("outlookPassword"));
 		Assert.assertEquals(dashboard.verifyDashboardPageHeading(), "Dashboard");
 	}	
 
-	@AfterMethod
+	@AfterClass
 	public void tearDown() {
-		//driver.close();
+		driver.quit();
 	}
-
 }

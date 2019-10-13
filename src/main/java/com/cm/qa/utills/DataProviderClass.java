@@ -238,7 +238,7 @@ public class DataProviderClass extends TestBase{
 
 	@DataProvider(name="DocumentsData")
 	public Object[][] getDocumentsTabData() {
-		Object data[][] = readDataFromFile(projectPath+"/src/main/java/com/cm/qa/testdata/ECMTestData.xlsx", "Documents");
+		Object data[][] = readDataFromFile(projectPath+"/src/main/java/com/cm/qa/testdata/ECMTestData - Documents.xlsx", "AddDocument");
 		return data ;
 	}
 

@@ -1,8 +1,8 @@
 package com.cm.qa.testcases;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.cm.qa.pages.ContractListPage;
@@ -30,7 +30,7 @@ public class SLAPageTests extends TestBase{
 		super() ;
 	}
 
-	@BeforeMethod
+	@BeforeClass
 	public void setUp() {
 		initializeBrowser() ;
 		uName = new UsernamePage() ;
@@ -38,12 +38,12 @@ public class SLAPageTests extends TestBase{
 		sla = new SLAPage();
 		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
 		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;
-		contractList = dashboard.gotoContractListPage() ;
 	}
 
 	@Test(priority = 81, dataProvider = "tat", dataProviderClass = DataProviderClass.class)
 	public void addTATTest(String contractTitle, String clause, String referenceNo, String relatedReferenceNo, String status, 
 			String currency, String performancePay, String type, String hours, String reminder) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		sla.clickOnSLATab()
 		.fillTATForm(clause, referenceNo, relatedReferenceNo, status, currency,performancePay, type, hours, reminder)
@@ -54,6 +54,7 @@ public class SLAPageTests extends TestBase{
 	@Test(priority = 82, dataProvider = "quality", dataProviderClass = DataProviderClass.class)
 	public void addQualityTest(String contractTitle, String clause, String referenceNo, String relatedReferenceNo, String status, 
 			String preShipment, String CAL, String dateReported, String CQR, String type, String currency, String performancePay, String reminder) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		sla.clickOnSLATab()
 		.clickOnQualityab()
@@ -65,6 +66,7 @@ public class SLAPageTests extends TestBase{
 	@Test(priority = 83, dataProvider = "upTime", dataProviderClass = DataProviderClass.class)
 	public void addUptimeTest(String contractTitle, String clause, String referenceNo, String relatedReferenceNo, String status, 
 			String uptimeHours, String type, String currency, String performancePay, String reminder) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		sla.clickOnSLATab()
 		.clickOnUptimeTab()
@@ -73,9 +75,8 @@ public class SLAPageTests extends TestBase{
 		Assert.assertEquals(utills.readSuccessMessage(), "Contract successfully updated\n"+"Operation Success");
 	}
 
-	@AfterMethod
+	@AfterClass
 	public void tearDown() {
-		driver.close();
+		driver.quit();
 	}
-
 }

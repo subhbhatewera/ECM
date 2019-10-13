@@ -33,7 +33,7 @@ public class TestBase {
 	public TestBase() {
 		try {
 			prop = new Properties() ;
-			FileInputStream ip = new FileInputStream(projectpath+"\\src\\main\\java\\com\\cm\\qa\\config\\config.properties") ;
+			FileInputStream ip = new FileInputStream(projectpath+"/src/main/java/com/cm/qa/config/config.properties") ;
 			prop.load(ip);
 		}
 		catch(Exception e) {
@@ -44,18 +44,18 @@ public class TestBase {
 	public void initializeBrowser() {
 		String browserName = prop.getProperty("browser") ;
 		if(browserName.equals("firefox")) {
-			System.setProperty("webdriver.gecko.driver", projectpath+"\\driver\\firefox\\geckodriver.exe") ;
+			System.setProperty("webdriver.gecko.driver", projectpath+"/driver/firefox/geckodriver.exe") ;
 			driver = new FirefoxDriver() ;
 		}
 		else if(browserName.equals("chrome")) {
-			System.setProperty("webdriver.chrome.driver", projectpath+"\\driver\\chrome\\chromedriver.exe") ;
+			System.setProperty("webdriver.chrome.driver", projectpath+"/driver/chrome/chromedriver.exe") ;
 			driver = new ChromeDriver() ;
 		}
 		else {
 			System.out.println("Either browser is not present in Properties File or Wrong browser name");
 		}
 		driver.manage().window().maximize() ;
-		//	driver.manage().deleteAllCookies() ;
+		driver.manage().deleteAllCookies() ;
 		driver.get(prop.getProperty("url"));
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
 	}
@@ -77,15 +77,7 @@ public class TestBase {
 	}
 
 	public void selectDropDownOption(WebElement element, String value) {
-		builder = new Actions(driver) ;
-		customVisibleWait(element);
-		builder.moveToElement(element).click().perform();
-		WebElement option = driver.findElement(By.xpath("(//span[@class='mat-option-text' and contains(text(),'"+value+"')])[1]")) ;
-		builder.moveToElement(option).click().perform();
-	}
-
-	public void selectDropDownOptionWithWait(WebElement element, String value) {
-		sleep(200);
+		sleep(2000);
 		builder = new Actions(driver) ;
 		clickElement(element);
 		WebElement option = driver.findElement(By.xpath("(//span[@class='mat-option-text' and contains(text(),'"+value+"')])[1]")) ;
@@ -116,17 +108,12 @@ public class TestBase {
 		js.executeScript("arguments[0].scrollIntoView();", element);
 	}
 
-	public void setReadOnlyFalse(WebElement element) {
-		js = (JavascriptExecutor)driver;
-		js.executeScript("arguments[0].removeAttribute('readonly','readonly')", element);
-	}
-
 	public void sleep(long duration) {
 		try {
 			Thread.sleep(duration);
 		}
-		catch(Exception e) {
-			System.out.println(e);
+		catch(InterruptedException ae) {
+			ae.printStackTrace();
 		}
 	}
 
@@ -141,18 +128,17 @@ public class TestBase {
 		try {
 			setClipboardData(imagePath);
 			Robot robot = new Robot();
+			robot.delay(2000);
 			robot.keyPress(KeyEvent.VK_CONTROL);
 			robot.keyPress(KeyEvent.VK_V);
 			robot.keyRelease(KeyEvent.VK_V);
 			robot.keyRelease(KeyEvent.VK_CONTROL);
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
+			sleep(5000);
 		}
 		catch(AWTException e) {
 			e.printStackTrace();
 		}
 	}
-
-
-
 }

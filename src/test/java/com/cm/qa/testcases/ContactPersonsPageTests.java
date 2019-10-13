@@ -1,8 +1,8 @@
 package com.cm.qa.testcases;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.cm.qa.pages.ContactPersonsPage;
@@ -30,19 +30,19 @@ public class ContactPersonsPageTests extends TestBase{
 		super() ;
 	}
 
-	@BeforeMethod
+	@BeforeClass
 	public void setUp() {
 		initializeBrowser() ;
 		uName = new UsernamePage() ;
 		utills = new Utills() ;
 		contactPersons = new ContactPersonsPage();
 		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
-		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;
-		contractList = dashboard.gotoContractListPage() ;
+		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;		
 	}
 
 	@Test(priority = 91, dataProvider = "contactPersonInvalidData", dataProviderClass = DataProviderClass.class)
 	public void verifyInvalidPersonNameTest(String contractTitle, String person, String email, String country, String phoneNumber) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		contactPersons.clickOnContactPersonsTab()
 		.clickOnAddButton()
@@ -53,6 +53,7 @@ public class ContactPersonsPageTests extends TestBase{
 
 	@Test(priority = 92, dataProvider = "contactPersonInvalidData", dataProviderClass = DataProviderClass.class)
 	public void verifyInvalidEmailTest(String contractTitle, String person, String email, String country, String phoneNumber) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		contactPersons.clickOnContactPersonsTab()
 		.clickOnAddButton()
@@ -63,6 +64,7 @@ public class ContactPersonsPageTests extends TestBase{
 
 	@Test(priority = 93, dataProvider = "contactPersonInvalidData", dataProviderClass = DataProviderClass.class)
 	public void verifyInvalidPhoneNumberTest(String contractTitle, String person, String email, String country, String phoneNumber) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		contactPersons.clickOnContactPersonsTab()
 		.clickOnAddButton()
@@ -74,6 +76,7 @@ public class ContactPersonsPageTests extends TestBase{
 
 	@Test(priority = 94, dataProvider = "function", dataProviderClass = DataProviderClass.class)
 	public void addNewFunctionTest(String contractTitle, String functionName) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		contactPersons.clickOnContactPersonsTab()
 		.clickOnAddButton()
@@ -85,15 +88,17 @@ public class ContactPersonsPageTests extends TestBase{
 
 	@Test(priority = 95, dataProvider = "contractTitleContactPerson", dataProviderClass = DataProviderClass.class)
 	public void duplicateFunctionNameTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		contactPersons.clickOnContactPersonsTab()
 		.clickOnAddButton()
 		.addNewFunction("CRM");
 		Assert.assertEquals(utills.readErrorMessage(), "CREATE: Error, Function with name CRM already exists!\n"+"Operation Success");
 	}
-	
+
 	@Test(priority = 96, dataProvider = "contractTitleContactPerson", dataProviderClass = DataProviderClass.class)
 	public void blankFunctionNameTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		contactPersons.clickOnContactPersonsTab()
 		.clickOnAddButton()
@@ -103,6 +108,7 @@ public class ContactPersonsPageTests extends TestBase{
 
 	@Test(priority = 97, dataProvider = "addContactPerson", dataProviderClass = DataProviderClass.class)
 	public void addContactPersonsTest(String contractTitle, String function, String person, String emailID, String country, String phoneNumber) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		contactPersons.clickOnContactPersonsTab()
 		.clickOnAddButton()
@@ -115,6 +121,7 @@ public class ContactPersonsPageTests extends TestBase{
 
 	@Test(priority = 98, dataProvider = "editContactPerson", dataProviderClass = DataProviderClass.class)
 	public void editContactPersonTest(String contractTitle, String function, String person, String emailID, String country, String phoneNumber) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		contactPersons.clickOnContactPersonsTab()
 		.clickOnEditIcon()
@@ -127,6 +134,7 @@ public class ContactPersonsPageTests extends TestBase{
 
 	@Test(priority = 99, dataProvider = "contractTitleContactPerson", dataProviderClass = DataProviderClass.class)
 	public void deleteContactPersonTest(String contractTitle) {
+		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon(contractTitle);
 		contactPersons.clickOnContactPersonsTab()
 		.clickOnDeleteIcon()
@@ -134,9 +142,9 @@ public class ContactPersonsPageTests extends TestBase{
 		Assert.assertEquals(utills.readSuccessMessage(), "Contact Person successfully deleted\n"+"Operation Success");		
 	}	
 
-	@AfterMethod
+	@AfterClass
 	public void tearDown() {
-		driver.close();
+		driver.quit();
 	}
 
 }

@@ -64,7 +64,7 @@ public class DocumentsPage extends TestBase {
 	}
 	
 	public DocumentsPage selectContractType(String contractType) {
-		selectDropDownOptionWithWait(contractTypeDropDown, contractType);
+		selectDropDownOption(contractTypeDropDown, contractType);
 		return this;
 	}
 
@@ -79,15 +79,15 @@ public class DocumentsPage extends TestBase {
 	}
 
 	public DocumentsPage selectStatus(String status) {
-		selectDropDownOptionWithWait(statusDropDown, status);
+		selectDropDownOption(statusDropDown, status);
 		return this;
 	}
 
 	public void selectAttachment(String imagePath) {
-	//	clickElement(attachmentsField);
-	//	uploadFile(imagePath);
-		setReadOnlyFalse(attachmentsField);
-		writeText(attachmentsField, imagePath);
+		clickElement(attachmentsField);
+		uploadFile(imagePath);
+	//	setReadOnlyFalse(attachmentsField);
+	//	writeText(attachmentsField, imagePath);
 	}
 
 	public DocumentsPage fillDocumentForm(String contractType, String uploadDate, String signedDate, String status, String imagePath) {

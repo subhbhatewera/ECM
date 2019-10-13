@@ -91,7 +91,7 @@ public class NotificationPage extends TestBase {
 	}
 
 	public void selectBusinessPartner(String businessPartner) {
-		selectDropDownOptionWithWait(businessPartnerDropDown, businessPartner);
+		selectDropDownOption(businessPartnerDropDown, businessPartner);
 	}
 
 	public void selectType(String type) {

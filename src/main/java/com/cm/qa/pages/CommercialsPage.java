@@ -234,7 +234,7 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public void selectBillingFrequency(String billingFrequency) {
-		selectDropDownOptionWithWait(billingFrequencyDropDown, billingFrequency);
+		selectDropDownOption(billingFrequencyDropDown, billingFrequency);
 	}
 
 	public void enterCreditPeriodValue(String creditPeriodValue) {
@@ -294,7 +294,7 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public CommercialsPage selectCurrency(String currency) {
-		selectDropDownOptionWithWait(currencyDropDown, currency);
+		selectDropDownOption(currencyDropDown, currency);
 		return this;
 	}
 
@@ -304,7 +304,7 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public CommercialsPage selectUOM(String uomOption) {
-		selectDropDownOptionWithWait(uomDropDown, uomOption);
+		selectDropDownOption(uomDropDown, uomOption);
 		return this;
 	}
 
@@ -363,7 +363,7 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public void selectService(String service) {
-		selectDropDownOptionWithWait(serviceDropDown, service);
+		selectDropDownOption(serviceDropDown, service);
 	}
 
 	public CommercialsPage clickServicePlusIcon() {
@@ -380,7 +380,7 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public void selectSubService(String subService) {
-		selectDropDownOptionWithWait(subServiceDropDown, subService);
+		selectDropDownOption(subServiceDropDown, subService);
 	}
 
 	public CommercialsPage clickSubServicePlusIcon() {
@@ -471,9 +471,9 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public CommercialsPage selectTierType(String tierType, String volumeSplit, String volumeGroupName) {
-		selectDropDownOptionWithWait(tierTypeDropDown, tierType);
+		selectDropDownOption(tierTypeDropDown, tierType);
 		if(tierType.equalsIgnoreCase("Simple")) {
-			selectDropDownOptionWithWait(volumeSplitDropDown, volumeSplit);
+			selectDropDownOption(volumeSplitDropDown, volumeSplit);
 		}
 		else if(tierType.equalsIgnoreCase("Group")) {
 			writeText(volumeGroupNameField, volumeGroupName);
@@ -501,7 +501,7 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public CommercialsPage selectApplicableFactor(String applicableFactor) {
-		selectDropDownOptionWithWait(applicableFactorDropDown, applicableFactor);
+		selectDropDownOption(applicableFactorDropDown, applicableFactor);
 		return this;
 	}
 
@@ -559,7 +559,7 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public CommercialsPage selectTableUOM(String tableUOM) {
-		selectDropDownOptionWithWait(tableUOMDropDown, tableUOM);
+		selectDropDownOption(tableUOMDropDown, tableUOM);
 		return this;
 	}
 
@@ -600,7 +600,7 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public void selectAdvancedBilling(String advancedBilling, String effStartDate, String effEndDate) {
-		selectDropDownOptionWithWait(advanceBillingDropDown, advancedBilling);
+		selectDropDownOption(advanceBillingDropDown, advancedBilling);
 		if(advancedBilling.contentEquals("Yes")) {
 			enterEffectiveStartDate(effStartDate);
 			enterEffectiveEndDate(effEndDate);
@@ -608,7 +608,7 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public void selectApplicablePeriod(String applicablePeriod) {
-		selectDropDownOptionWithWait(applicablePeriodDropDown, applicablePeriod);
+		selectDropDownOption(applicablePeriodDropDown, applicablePeriod);
 	}
 
 	public CommercialsPage fillFixedFeeForm(String lineItem, String currency, String rate, String uomOption, String advancedBilling, 
@@ -635,7 +635,7 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public CommercialsPage selectType(String type, String currency, String rate, String quantity) {
-		selectDropDownOptionWithWait(typeDropDown, type);
+		selectDropDownOption(typeDropDown, type);
 		if(type.equalsIgnoreCase("Value")) {
 			selectCurrency(currency);
 			enterRate(rate);
