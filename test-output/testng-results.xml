@@ -1,58 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="46285" started-at="2019-10-13T10:26:49Z" finished-at="2019-10-13T10:27:35Z">
+  <suite name="Suite" duration-ms="20120" started-at="2019-10-21T19:37:11Z" finished-at="2019-10-21T19:37:31Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="46285" started-at="2019-10-13T10:26:49Z" finished-at="2019-10-13T10:27:35Z">
-      <class name="com.cm.qa.testcases.DocumentsPageTests">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.cm.qa.testcases.DocumentsPageTests@42e26948]" name="setUp" is-config="true" duration-ms="21625" started-at="2019-10-13T10:26:49Z" finished-at="2019-10-13T10:27:11Z">
+    <test name="Test" duration-ms="20120" started-at="2019-10-21T19:37:11Z" finished-at="2019-10-21T19:37:31Z">
+      <class name="com.cm.qa.testcases.UsernamePageTests">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.cm.qa.testcases.UsernamePageTests@4f787b]" name="setUp" is-config="true" duration-ms="13457" started-at="2019-10-21T19:37:11Z" finished-at="2019-10-21T19:37:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="addDocument(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.cm.qa.testcases.DocumentsPageTests@42e26948]" name="addDocument" duration-ms="23537" started-at="2019-10-13T10:27:12Z" data-provider="DocumentsData" finished-at="2019-10-13T10:27:35Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[
-Electronics Gadgets]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[Addendum]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[10/10/2019]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[10/10/2019]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[YTS]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[C:\Users\subh\eclipse-workspace\ECM\src\main\java\com\cm\qa\testdata\Document 1.png]]>
-              </value>
-            </param>
-          </params>
+        <test-method status="PASS" signature="usernameScreenCMLogoImageTest()[pri:1, instance:com.cm.qa.testcases.UsernamePageTests@4f787b]" name="usernameScreenCMLogoImageTest" duration-ms="113" started-at="2019-10-21T19:37:24Z" finished-at="2019-10-21T19:37:24Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addDocument -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.cm.qa.testcases.DocumentsPageTests@42e26948]" name="tearDown" is-config="true" duration-ms="2" started-at="2019-10-13T10:27:35Z" finished-at="2019-10-13T10:27:35Z">
+        </test-method> <!-- usernameScreenCMLogoImageTest -->
+        <test-method status="PASS" signature="blankUsernameTest()[pri:2, instance:com.cm.qa.testcases.UsernamePageTests@4f787b]" name="blankUsernameTest" duration-ms="918" started-at="2019-10-21T19:37:24Z" finished-at="2019-10-21T19:37:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- blankUsernameTest -->
+        <test-method status="PASS" signature="verifyFooterText()[pri:3, instance:com.cm.qa.testcases.UsernamePageTests@4f787b]" name="verifyFooterText" duration-ms="147" started-at="2019-10-21T19:37:25Z" finished-at="2019-10-21T19:37:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyFooterText -->
+        <test-method status="PASS" signature="validUsernameTest()[pri:4, instance:com.cm.qa.testcases.UsernamePageTests@4f787b]" name="validUsernameTest" duration-ms="525" started-at="2019-10-21T19:37:25Z" finished-at="2019-10-21T19:37:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validUsernameTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.cm.qa.testcases.UsernamePageTests@4f787b]" name="tearDown" is-config="true" duration-ms="4916" started-at="2019-10-21T19:37:26Z" finished-at="2019-10-21T19:37:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.cm.qa.testcases.DocumentsPageTests -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      </class> <!-- com.cm.qa.testcases.UsernamePageTests -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="20331" started-at="2019-10-21T19:42:54Z" finished-at="2019-10-21T19:43:14Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="20331" started-at="2019-10-21T19:42:54Z" finished-at="2019-10-21T19:43:14Z">
+      <class name="com.cm.qa.testcases.UsernamePageTests">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.cm.qa.testcases.UsernamePageTests@da1055]" name="setUp" is-config="true" duration-ms="13873" started-at="2019-10-21T19:42:54Z" finished-at="2019-10-21T19:43:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="usernameScreenCMLogoImageTest()[pri:1, instance:com.cm.qa.testcases.UsernamePageTests@da1055]" name="usernameScreenCMLogoImageTest" duration-ms="98" started-at="2019-10-21T19:43:08Z" finished-at="2019-10-21T19:43:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- usernameScreenCMLogoImageTest -->
+        <test-method status="PASS" signature="blankUsernameTest()[pri:2, instance:com.cm.qa.testcases.UsernamePageTests@da1055]" name="blankUsernameTest" duration-ms="880" started-at="2019-10-21T19:43:08Z" finished-at="2019-10-21T19:43:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- blankUsernameTest -->
+        <test-method status="PASS" signature="verifyFooterText()[pri:3, instance:com.cm.qa.testcases.UsernamePageTests@da1055]" name="verifyFooterText" duration-ms="120" started-at="2019-10-21T19:43:09Z" finished-at="2019-10-21T19:43:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyFooterText -->
+        <test-method status="PASS" signature="validUsernameTest()[pri:4, instance:com.cm.qa.testcases.UsernamePageTests@da1055]" name="validUsernameTest" duration-ms="567" started-at="2019-10-21T19:43:09Z" finished-at="2019-10-21T19:43:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validUsernameTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.cm.qa.testcases.UsernamePageTests@da1055]" name="tearDown" is-config="true" duration-ms="4758" started-at="2019-10-21T19:43:10Z" finished-at="2019-10-21T19:43:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.cm.qa.testcases.UsernamePageTests -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

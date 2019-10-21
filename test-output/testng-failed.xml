@@ -3,13 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.cm.qa.testcases.DocumentsPageTests">
+      <class name="com.cm.qa.testcases.UsernamePageTests">
         <methods>
-          <include name="addDocument" invocation-numbers="0"/>
-          <include name="tearDown"/>
           <include name="setUp"/>
+          <include name="blankUsernameTest"/>
+          <include name="usernameScreenCMLogoImageTest"/>
+          <include name="verifyFooterText"/>
+          <include name="tearDown"/>
+          <include name="validUsernameTest"/>
         </methods>
-      </class> <!-- com.cm.qa.testcases.DocumentsPageTests -->
+      </class> <!-- com.cm.qa.testcases.UsernamePageTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
