@@ -15,7 +15,7 @@ public class UsernamePage extends TestBase {
 	@FindBy(xpath = "//input[@name='username']")
 	WebElement userNameField ;
 
-	@FindBy(id = "loginBtn")
+	@FindBy(xpath = "//span[contains(text(),'Next')]")
 	WebElement nextButton ;
 	
 	@FindBy(xpath = "//p[@class='ng-tns-c2-0']")

@@ -18,7 +18,7 @@ public class PasswordPage extends TestBase{
 	@FindBy(id = "inputPassword")
 	WebElement passwordField ;
 
-	@FindBy(id = "loginBtn")
+	@FindBy(xpath = "//span[contains(text(),'Login')]")
 	WebElement loginButton ;
 
 	@FindBy(xpath = "//p[contains(text(),'OTP LOGIN')]")

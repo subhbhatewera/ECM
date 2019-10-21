@@ -44,7 +44,7 @@ public class TestBase {
 	public void initializeBrowser() {
 		String browserName = prop.getProperty("browser") ;
 		if(browserName.equals("firefox")) {
-			System.setProperty("webdriver.gecko.driver", projectpath+"/driver/firefox/geckodriver.exe") ;
+			System.setProperty("webdriver.gecko.driver", projectpath+"/driver/firefox/geckodriver") ;
 			driver = new FirefoxDriver() ;
 		}
 		else if(browserName.equals("chrome")) {
