@@ -27,10 +27,10 @@ public class GeneralInformationPage extends TestBase {
 	@FindBy(xpath = "//input[@placeholder='Name']")
 	WebElement addPopupNameField ;
 
-	@FindBy(xpath = "//span[contains(@class,'mat-button') and contains(text(),'Save')]")
+	@FindBy(xpath = "//span[contains(text(),'Save')]")
 	WebElement addPopupSaveButton ;
 
-	@FindBy(xpath = "//span[contains(@class,'mat-button') and contains(text(),'Cancel')]")
+	@FindBy(xpath = "//span[contains(text(),'Cancel')]")
 	WebElement addPopupCancelButton ;	
 
 	@FindBy(xpath = "//mat-select[@placeholder='Sub Category']")
@@ -59,14 +59,14 @@ public class GeneralInformationPage extends TestBase {
 
 	@FindBy(xpath = "//mat-select[@placeholder='Legal Entity']")
 	WebElement legalEntityDropDown ;
-	
+
 	@FindBy(xpath = "(//i[contains(@class,'plus-circle')])[4]")
 	WebElement legalEntityDropDownPlusIcon ;
 
-	@FindBy(id="cancel")
+	@FindBy(xpath="//button[contains(text(),'Cancel')]")
 	WebElement generalInformationCancelButton ;
 
-	@FindBy(id="saveAndContinueContractButton")
+	@FindBy(xpath="//button[contains(text(),'Save')]")
 	WebElement generalInformationSaveAndContinueButton ;
 
 	public GeneralInformationPage () {
@@ -144,7 +144,7 @@ public class GeneralInformationPage extends TestBase {
 	public void enterLocation(String location) {
 		selectLocation(locationField, location);
 	}
-	
+
 	public GeneralInformationPage enterInvalidLocation(String location) {
 		writeText(locationField, location);
 		return this;
@@ -163,7 +163,7 @@ public class GeneralInformationPage extends TestBase {
 	public void selectLegalEntity(String legalEntity) {
 		selectDropDownOption(legalEntityDropDown, legalEntity);
 	}
-	
+
 	public void openAddLegalEntityPopup() {
 		clickElement(legalEntityDropDownPlusIcon);
 	}
@@ -194,5 +194,4 @@ public class GeneralInformationPage extends TestBase {
 		selectLegalEntity(legalEntity);
 		return this;
 	}
-
 }

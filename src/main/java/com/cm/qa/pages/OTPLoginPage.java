@@ -10,22 +10,22 @@ import com.cm.qa.utills.Utills;
 import cm.cm.qa.base.TestBase;
 
 public class OTPLoginPage extends TestBase {
-	
+
 	Utills utills; 
 	Outlook outlook ;
-	
-	@FindBy(xpath = "//span[@class='mat-button-wrapper' and contains(text(),'Submit')]")
+
+	@FindBy(xpath = "//span[contains(text(),'Submit')]")
 	WebElement submitButton ;
-	
+
 	public OTPLoginPage () {
 		PageFactory.initElements(driver,  this);
 	}
-	
+
 	public void clickSubmitButton() {
 		customVisibleWait(submitButton);
 		submitButton.click();
 	}
-	
+
 	public DashboardPage OTPLogin(String uName, String pwd) {
 		utills = new Utills() ;
 		outlook = new Outlook() ;
@@ -42,7 +42,7 @@ public class OTPLoginPage extends TestBase {
 		clickSubmitButton();
 		return new DashboardPage() ;
 	}
-	
+
 	public void enterWrongOTP() {
 		for(int i = 0 ; i < 6 ; i++) {
 			WebElement element = driver.findElement(By.xpath("//input[@formcontrolname='digitFormControlName"+(i+1)+"']"));
@@ -50,6 +50,4 @@ public class OTPLoginPage extends TestBase {
 			element.sendKeys("0");
 		}
 	}
-	
-
 }

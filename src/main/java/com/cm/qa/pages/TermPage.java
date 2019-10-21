@@ -31,11 +31,13 @@ public class TermPage extends TestBase{
 	@FindBy(xpath = "//input[@placeholder='End Date']")
 	WebElement endDateField ;
 
-	@FindBy(xpath = "//input[@placeholder='Contract Term']")
-	WebElement contractTermField ;
-
-	@FindBy(xpath = "//mat-select[@formcontrolname='contractTermType']")
-	WebElement termDurationDropDown ;
+	/* Contract Term is not auto caculate field
+	 * @FindBy(xpath = "//input[@placeholder='Contract Term']")
+	 * WebElement contractTermField ;
+	 *	
+	 * @FindBy(xpath = "//mat-select[@formcontrolname='contractTermType']")
+	 * WebElement termDurationDropDown ;
+	 */
 
 	@FindBy(xpath = "//input[@placeholder='Signed Date']")
 	WebElement signedDateField ;
@@ -58,10 +60,10 @@ public class TermPage extends TestBase{
 	@FindBy(xpath = "//textarea[@placeholder='Description']")
 	WebElement descriptionBox ;
 
-	@FindBy(id="cancel")
+	@FindBy(xpath="//button[contains(text(),'Cancel')]")
 	WebElement termCancelButton ;
 
-	@FindBy(id="saveAndContinueContractButton")
+	@FindBy(xpath="//button[contains(text(),'Save')]")
 	WebElement termSaveAndContinueButton ;
 
 	public TermPage() {
@@ -94,14 +96,6 @@ public class TermPage extends TestBase{
 
 	public void enterEndDate(String endDate) {
 		calendar.selectDateNew(endDateField, endDate);
-	}
-
-	public void enterContractTerm(String contractTermValue) {
-		writeText(contractTermField, contractTermValue);
-	}
-
-	public void selectContractTermDuration(String contractTermDuration) {
-		selectDropDownOption(termDurationDropDown, contractTermDuration);
 	}
 
 	public void enterSignedDate(String signedDate) {
@@ -146,8 +140,6 @@ public class TermPage extends TestBase{
 		clickFixedPeriodTab();
 		enterStartDate(startDate);
 		enterEndDate(endDate);
-		enterContractTerm(contractTermValue);
-		selectContractTermDuration(contractTermDuration);
 		enterSignedDate(signedDate);
 		selectRenewalType(renewalType);
 		enterNoticePeriod(noticePeriodValue);
@@ -163,8 +155,6 @@ public class TermPage extends TestBase{
 		clickFixedPeriodWithoutRenewalTab();
 		enterStartDate(startDate);
 		enterEndDate(endDate);
-		enterContractTerm(contractTermValue);
-		selectContractTermDuration(contractTermDuration);
 		enterSignedDate(signedDate);
 		enterGracePeriod(gracePeriodValue);
 		selectGracePeriodDuration(gracePeriodDuration);
@@ -201,8 +191,6 @@ public class TermPage extends TestBase{
 			enterStartDate(startDate);
 			enterSignedDate(signedDate);
 			enterEndDate(endDate);
-			enterContractTerm(contractTermValue);
-			selectContractTermDuration(contractTermDuration);
 			selectRenewalType(renewalType);
 			enterNoticePeriod(noticePeriodValue);
 			selectNoticePeriodDuration(noticePeriodDuration);
@@ -215,8 +203,6 @@ public class TermPage extends TestBase{
 			enterStartDate(startDate);
 			enterSignedDate(signedDate);
 			enterEndDate(endDate);
-			enterContractTerm(contractTermValue);
-			selectContractTermDuration(contractTermDuration);
 			enterGracePeriod(gracePeriodValue);
 			selectGracePeriodDuration(gracePeriodDuration);
 			enterDescription(description);

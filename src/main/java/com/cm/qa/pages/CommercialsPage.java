@@ -56,13 +56,13 @@ public class CommercialsPage extends TestBase{
 	@FindBy(xpath = "//textarea[@placeholder='Clause']")
 	WebElement clauseField ;
 
-	@FindBy(id = "(//button[@id='cancel'])[1]")
+	@FindBy(xpath = "(//button[contains(text(),'Cancel')])[1]")
 	WebElement listingScreenCancelButton ;
 
-	@FindBy(xpath = "(//button[@class='cm-btn' and contains(text(),'Save')])[1]")
+	@FindBy(xpath = "(//button[contains(text(),'Save')])[1]")
 	WebElement listingScreenSaveButton ;	
 
-	@FindBy(xpath = "//button[@class='cm-btn' and contains(text(),'Add')]")
+	@FindBy(xpath = "//button[contains(text(),'Add')]")
 	WebElement addButton ;
 
 	@FindBy(xpath = "//input[@placeholder='Line Item']")
@@ -83,7 +83,7 @@ public class CommercialsPage extends TestBase{
 	@FindBy(xpath = "//input[@placeholder='Name']")
 	WebElement addPopupNameField ;
 
-	@FindBy(xpath = "//span[contains(@class,'mat-button') and contains(text(),'Save')]")
+	@FindBy(xpath = "//span[contains(text(),'Save')]")
 	WebElement addPopupSaveButton ;
 
 	@FindBy(xpath = "//input[@placeholder='Effective Start Date']")
@@ -134,10 +134,10 @@ public class CommercialsPage extends TestBase{
 	@FindBy(xpath = "//input[@placeholder='Location']")
 	WebElement locationField ;
 
-	@FindBy(xpath = "(//button[@class='cm-btn' and contains(text(),'Cancel')])[2]")
+	@FindBy(xpath = "(//button[contains(text(),'Cancel')])[2]")
 	WebElement addScreenCancelButton ;
 
-	@FindBy(xpath = "(//button[@class='cm-btn' and contains(text(),'Save')])[2]")
+	@FindBy(xpath = "(//button[contains(text(),'Save')])[2]")
 	WebElement addScreenSaveButton ;
 
 	@FindBy(xpath = "//mat-select[@placeholder='Tier Type']")

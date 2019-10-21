@@ -23,10 +23,9 @@ public class PasswordPage extends TestBase{
 
 	@FindBy(xpath = "//p[contains(text(),'OTP LOGIN')]")
 	WebElement otpLoginLink ;
-
-	@FindBy(xpath = "//p[contains(text(),'FORGOT PASSWORD')]")
-	WebElement forgotPasswordLink ;
 	
+	//Forgot password feature is removed
+
 	@FindBy(xpath = "//p[@class='ng-tns-c2-0']")
 	WebElement footerText ;	
 
@@ -57,10 +56,6 @@ public class PasswordPage extends TestBase{
 		customClickableWait(otpLoginLink);
 		otpLoginLink.click() ;
 		return new OTPLoginPage() ;
-	}
-	
-	public void clickForgotPasswordLink() {
-		forgotPasswordLink.click();
 	}
 	
 	public DashboardPage login(String pwd) {

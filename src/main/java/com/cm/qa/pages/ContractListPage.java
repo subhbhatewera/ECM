@@ -13,7 +13,7 @@ public class ContractListPage extends TestBase{
 	@FindBy(xpath = "//div[@class='heading' and contains(text(),'Contract List')]")
 	WebElement contractListPageHeading ;
 
-	@FindBy(xpath = "//button[@class='cm-btn']")
+	@FindBy(xpath = "//button[contains(text(),'Add Contract')]")
 	WebElement addContractButton ;
 	
 	@FindBy(xpath = "//input[@placeholder='Search']")
@@ -46,5 +46,4 @@ public class ContractListPage extends TestBase{
 		element.click() ;
 		return new GeneralInformationPage() ;
 	}
-
 }
