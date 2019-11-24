@@ -6,12 +6,14 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -62,12 +64,14 @@ public class TestBase {
 
 	public void customVisibleWait(WebElement element) {
 		wait = new WebDriverWait(driver, 10) ;
-		wait.until(ExpectedConditions.visibilityOf(element)) ;
+		wait.ignoring(StaleElementReferenceException.class)
+		.until(ExpectedConditions.visibilityOf(element)) ;
 	}
 
 	public void customClickableWait(WebElement element) {
 		wait = new WebDriverWait(driver, 20) ;
-		wait.until(ExpectedConditions.elementToBeClickable(element)) ;
+		wait.ignoring(StaleElementReferenceException.class)
+		.until(ExpectedConditions.visibilityOf(element)) ;
 	}
 
 	public void writeText(WebElement element, String value) {
@@ -76,24 +80,29 @@ public class TestBase {
 		element.sendKeys(value) ;
 	}
 
-	public void selectDropDownOption(WebElement element, String value) {
+	public void searchTableData(String path, String userOption) {
+		List<WebElement> options = driver.findElements(By.xpath(path));
+		for(WebElement str : options) {
+			String appOption = str.getText();
+			if(userOption.equalsIgnoreCase(appOption)) {
+				str.click();
+				break ;
+			}
+		} 
+	}
+
+	public void selectDropDownOption(WebElement element, String userOption) {
 		sleep(2000);
-		builder = new Actions(driver) ;
 		clickElement(element);
-		WebElement option = driver.findElement(By.xpath("(//span[@class='mat-option-text' and contains(text(),'"+value+"')])[1]")) ;
-		clickElement(option);
+		String path = "//mat-option[@role='option']/span";
+		searchTableData(path, userOption);
 	}
 
 	public void selectLocation(WebElement element, String value) {
 		customVisibleWait(element) ;
 		element.clear() ;
 		element.sendKeys(value) ;
-		try {
-			Thread.sleep(1000);
-		}
-		catch(Exception e) {
-			System.out.println(e);
-		}
+		sleep(1000);
 		element.sendKeys(Keys.ARROW_DOWN);
 		element.sendKeys(Keys.ENTER);
 	}
