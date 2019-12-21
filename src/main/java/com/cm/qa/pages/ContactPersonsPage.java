@@ -1,14 +1,14 @@
 package com.cm.qa.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class ContactPersonsPage extends TestBase{
+
+public class ContactPersonsPage extends ActionClass{
 
 	//Page Factory - OR
 	@FindBy(xpath = "(//div[@class='mat-tab-label-content'][contains(text(),'Contact')])[1]")
@@ -26,8 +26,11 @@ public class ContactPersonsPage extends TestBase{
 	@FindBy(xpath = "//input[@placeholder='Name']")
 	WebElement addPopupNameField ;
 
-	@FindBy(xpath = "//span[contains(@class,'mat-button') and contains(text(),'Save')]")
+	@FindBy(xpath = "//span[contains(text(),'Save')]")
 	WebElement addPopupSaveButton ;
+	
+	@FindBy(xpath = "//span[contains(text(),'Cancel')]")
+	WebElement addPopupCancelButton ;
 
 	@FindBy(xpath = "//input[@placeholder='Person']")
 	WebElement personField ;
@@ -44,22 +47,22 @@ public class ContactPersonsPage extends TestBase{
 	@FindBy(xpath = "//input[@placeholder='Phone Number']")
 	WebElement phoneNumberField ;
 
-	@FindBy(xpath = "//button[@class='cm-btn' and contains(text(),'CANCEL')]")
+	@FindBy(xpath = "//button[contains(text(),' CANCEL')]")
 	WebElement listingScreenCancelButton ;
 
-	@FindBy(xpath = "//button[@class='cm-btn' and contains(text(),'SAVE')]")
+	@FindBy(xpath = "//button[contains(text(),'SAVE')]")
 	WebElement listingScreenSaveButton ;
 
-	@FindBy(xpath = "//button[@class='cm-btn' and contains(text(),'Save')]")
+	@FindBy(xpath = "//button[contains(text(),'Save')]")
 	WebElement addScreenSaveButton ;
 
-	@FindBy(xpath = "//button[@class='cm-btn' and contains(text(),'Cancel')]")
+	@FindBy(xpath = "//button[contains(text(),'Cancel')]")
 	WebElement addScreenCancelButton ;
 
 	@FindBy(xpath = "//button[contains(@class,'accept')]")
 	WebElement confirmationPopUpYesButton ;
 	
-	@FindBy(xpath = "//span[contains(@class,'mat-select-value')]")
+	@FindBy(xpath = "(//span[contains(@class,'mat-select-value')])[2]")
 	WebElement selectedDropDownOption;
 
 	public ContactPersonsPage() {
@@ -95,13 +98,22 @@ public class ContactPersonsPage extends TestBase{
 		return this;
 	}
 	
+	public ContactPersonsPage clickOnAddPopUpCancelButton() {
+		sleep(500);
+		clickElement(addPopupCancelButton);
+		return this;
+	}
+	
 	public void addNewFunction(String functionName) {
 		clickOnFunctionDropDownPlusIcon();
+		sleep(500);
 		enterName(functionName);
+		sleep(500);
 		clickOnAddPopUpSaveButton();
 	}	
 	
-	public String getSelectDropDownOption() {
+	public String getSelectedDropDownOption() {
+		sleep(1000);
 		return selectedDropDownOption.getText();
 	}
 
@@ -116,22 +128,7 @@ public class ContactPersonsPage extends TestBase{
 	}
 
 	public ContactPersonsPage selectCountry(String country) {
-		writeText(countrySearchField, country);
-		switch(country) {
-		case "India":
-			countrySearchField.sendKeys(Keys.ARROW_DOWN);
-			countrySearchField.sendKeys(Keys.ARROW_DOWN);
-			countrySearchField.sendKeys(Keys.ENTER);
-			break ;
-		case "United States":
-			countrySearchField.sendKeys(Keys.ARROW_DOWN);
-			countrySearchField.sendKeys(Keys.ENTER);
-			break;
-		case "Serbia":
-			countrySearchField.sendKeys(Keys.ARROW_DOWN);
-			countrySearchField.sendKeys(Keys.ENTER);
-			break;
-		}
+		searchAndSelect(countrySearchField, country);
 		return this;
 	}
 
@@ -142,11 +139,13 @@ public class ContactPersonsPage extends TestBase{
 
 	public ContactPersonsPage clickOnAddScreenSaveAndContinueButton() {
 		clickElement(addScreenSaveButton);
+		sleep(1000);
 		return this;
 	}
 
 	public ContactPersonsPage clickOnAddScreenCancelButton() {
 		clickElement(addScreenCancelButton);
+		sleep(1000);
 		return this;
 	}
 

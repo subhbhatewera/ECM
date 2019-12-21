@@ -1,13 +1,16 @@
 package com.cm.qa.utills;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class Calendar extends TestBase{
+public class Calendar extends ActionClass{
 
 	@FindBy(xpath = "//button[@aria-label='Choose month and year']")
 	WebElement monthAndYearButton ;
@@ -26,128 +29,65 @@ public class Calendar extends TestBase{
 
 	String afterXpath = "]//td[" ;
 
+	//tr[1]//td[1]
+
 	public Calendar() {
 		PageFactory.initElements(driver, this);
 	}
 
 	public void selectYear(String inputYear) {
-		boolean flag = false ;
-
+		boolean flag = false ;		
 		for(int yearRowNum = 1 ; yearRowNum <=6 ; yearRowNum ++) {
 			for(int yearColNum = 1 ; yearColNum <= 4 ; yearColNum ++) {
 				String yearValue = driver.findElement(By.xpath(beforeXpath+yearRowNum+afterXpath+yearColNum+"]")).getText() ;
 				if(yearValue.equals(inputYear)) {
 					driver.findElement(By.xpath(beforeXpath+yearRowNum+afterXpath+yearColNum+"]")).click();
-					flag = true ;
+					flag = true ; //If values is found, control will come out of inner loop
 					break ;
 				}
 			}
 			if(flag) {
-				break ;
+				break ; //Control will come out of inner loop
 			}
 		}
 	}
 
-	public String getMonth(String inputMonth) {
-		String month = null ;
-		switch(inputMonth) {
-		case("01"):
-			month = "January" ;
-		break ;
-		case("02"):
-			month = "February" ;
-		break ;
-		case("03"):
-			month = "March" ;
-		break ;
-		case("04"):
-			month = "April" ;
-		break ;
-		case("05"):
-			month = "May" ;
-		break ;
-		case("06"):
-			month = "June" ;
-		break ;
-		case("07"):
-			month = "July" ;
-		break ;
-		case("08"):
-			month = "August" ;
-		break ;
-		case("09"):
-			month = "September" ;
-		break ;
-		case("10"):
-			month = "October" ;
-		break ;
-		case("11"):
-			month = "November" ;
-		break ;
-		case("12"):
-			month = "December" ;
-		break ;
+	public void verifyYearIsDisplayed(String inputYear) {
+		List<WebElement> yearList = driver.findElements(By.xpath("//tr//td"));			
+		int firstValue = Integer.parseInt(yearList.get(0).getText());
+		int lastValue = Integer.parseInt(yearList.get(23).getText());
+		int inputValue = Integer.parseInt(inputYear);
+		System.out.println("First Value : "+firstValue);
+		System.out.println("Last Value : "+lastValue);
+		System.out.println("Input Value : "+inputValue);
+
+		if (inputValue < firstValue) {
+			sleep(500);
+			previousButton.click();
+			selectYear(inputYear);
 		}
-		return month ;
+		else if(inputValue > lastValue) {
+			sleep(500);
+			nextButton.click();
+			selectYear(inputYear);
+		}				
+		else if(inputValue > firstValue || inputValue < lastValue) {
+			sleep(500);
+			selectYear(inputYear);
+		}	
 	}
 
 	public void selectMonth(String inputMonth) {
-
-		String month = null ;
-		boolean flag = false ;		
-
-		switch(inputMonth) {
-		case("01"):
-			month = "JAN" ;
-		break ;
-		case("02"):
-			month = "FEB" ;
-		break ;
-		case("03"):
-			month = "MAR" ;
-		break ;
-		case("04"):
-			month = "APR" ;
-		break ;
-		case("05"):
-			month = "MAY" ;
-		break ;
-		case("06"):
-			month = "JUN" ;
-		break ;
-		case("07"):
-			month = "JUL" ;
-		break ;
-		case("08"):
-			month = "AUG" ;
-		break ;
-		case("09"):
-			month = "SEP" ;
-		break ;
-		case("10"):
-			month = "OCT" ;
-		break ;
-		case("11"):
-			month = "NOV" ;
-		break ;
-		case("12"):
-			month = "DEC" ;
-		break ;
-		}
-
-		for(int monthRowNum = 2 ; monthRowNum <=6 ; monthRowNum++) {
-			for(int monthColNum = 1 ; monthColNum <= 4 ; monthColNum++) {
-				String monthValue = driver.findElement(By.xpath(beforeXpath+monthRowNum+afterXpath+monthColNum+"]")).getText() ;
-				if(monthValue.equals(month)) {
-					driver.findElement(By.xpath(beforeXpath+monthRowNum+afterXpath+monthColNum+"]")).click();
-					flag = true ;
-					break ;
-				}
-			}
-			if(flag) {
+		List<WebElement> monthList = driver.findElements(By.xpath("//tr//td"));
+		int inputValue = Integer.parseInt(inputMonth);	
+		for(int i = 1 ; i <= 12 ; i++) {
+			if(i == inputValue) {
+				sleep(500);
+				monthList.get(i).click();
 				break ;
 			}
 		}
+
 	}
 
 	public int checkFirstRow() {
@@ -160,50 +100,39 @@ public class Calendar extends TestBase{
 			initialRow = 2 ;
 		}
 		return initialRow ;
-	}
+	}	
 
 	public void selectDay(String inputDay) {
 		boolean flag = false ;
-
+		WebElement element = null ;
 		int initialRow = checkFirstRow() ;
+		List<WebElement> rowList = driver.findElements(By.xpath("//tr"));
+		int rowListSize = rowList.size();
 
-		for(int dayRowNum = initialRow ; dayRowNum <= 6 ; dayRowNum ++) {
-			for(int dayColNum = 1 ; dayColNum <=7 ; dayColNum++) {
-				String dayValue = driver.findElement(By.xpath(beforeXpath+dayRowNum+afterXpath+dayColNum+"]")).getText() ;
+		for(int dayRowNum = initialRow ; dayRowNum < (rowListSize-1) ; dayRowNum ++) {
+			List<WebElement> colList = driver.findElements(By.xpath(beforeXpath+dayRowNum+"]//td"));
+			int colListSize = colList.size();
+			for(int dayColNum = 1 ; dayColNum <=colListSize ; dayColNum++) {
+				try {
+					element = driver.findElement(By.xpath(beforeXpath+dayRowNum+afterXpath+dayColNum+"]")) ;
+				}
+				catch(NoSuchElementException e) {
+					System.out.println("Please enter a correct Date");
+					e.printStackTrace();
+					flag = false ;
+				}
+				String dayValue = element.getText();
 				if(dayValue.equals(inputDay)) {
-					driver.findElement(By.xpath(beforeXpath+dayRowNum+afterXpath+dayColNum+"]")).click();
+					element.click();
 					flag = true ;
 					break ;
-				}				
+				}
 			}
 			if(flag) {
 				break ;
 			}
 		}
-	}
-
-	public void selectDayNew(String inputMonth, String inputDay) {
-		String month = getMonth(inputMonth);
-		WebElement element = driver.findElement(By.xpath("(//td[contains(@aria-label,'"+month+" "+inputDay+"')])[1]")) ;
-		element.click();
-	}
-
-	public void selectDateNew(WebElement element, String date) {
-
-		String [] dateArray = date.split("/") ;
-		String month = dateArray[0] ;
-		String day = dateArray[1] ;
-		String year = dateArray[2] ;
-
-		customVisibleWait(element);
-		element.click();
-		monthAndYearButton.click();
-
-		selectYear(year);
-		selectMonth(month);
-		selectDayNew(month, day);
-
-	}
+	}		
 
 	public void selectDate(WebElement element, String date) {
 
@@ -212,11 +141,12 @@ public class Calendar extends TestBase{
 		String day = dateArray[1] ;
 		String year = dateArray[2] ;
 
-		customVisibleWait(element);
 		element.click();
+		sleep(1000);
 		monthAndYearButton.click();
+		sleep(1000);
 
-		selectYear(year);
+		verifyYearIsDisplayed(year);		
 		selectMonth(month);
 		selectDay(day);
 	}

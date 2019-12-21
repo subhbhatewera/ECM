@@ -7,9 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.cm.qa.utills.Calendar;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class CommercialsPage extends TestBase{
+public class CommercialsPage extends ActionClass{
 
 	Calendar calendar  = new Calendar();
 
@@ -56,7 +56,7 @@ public class CommercialsPage extends TestBase{
 	@FindBy(xpath = "//textarea[@placeholder='Clause']")
 	WebElement clauseField ;
 
-	@FindBy(xpath = "(//button[contains(text(),'Cancel')])[1]")
+	@FindBy(id = "(//button[@id='cancel'])[1]")
 	WebElement listingScreenCancelButton ;
 
 	@FindBy(xpath = "(//button[contains(text(),'Save')])[1]")
@@ -83,7 +83,7 @@ public class CommercialsPage extends TestBase{
 	@FindBy(xpath = "//input[@placeholder='Name']")
 	WebElement addPopupNameField ;
 
-	@FindBy(xpath = "//span[contains(text(),'Save')]")
+	@FindBy(xpath = "//span[contains(@class,'mat-button') and contains(text(),'Save')]")
 	WebElement addPopupSaveButton ;
 
 	@FindBy(xpath = "//input[@placeholder='Effective Start Date']")
@@ -134,7 +134,7 @@ public class CommercialsPage extends TestBase{
 	@FindBy(xpath = "//input[@placeholder='Location']")
 	WebElement locationField ;
 
-	@FindBy(xpath = "(//button[contains(text(),'Cancel')])[2]")
+	@FindBy(xpath = "(//button[@class='cm-btn' and contains(text(),'Cancel')])[2]")
 	WebElement addScreenCancelButton ;
 
 	@FindBy(xpath = "(//button[contains(text(),'Save')])[2]")
@@ -158,16 +158,16 @@ public class CommercialsPage extends TestBase{
 	@FindBy(xpath = "//input[@formcontrolname='upper_tier']")
 	WebElement upperTierField ;	
 
-	@FindBy(xpath = "//input[@formcontrolname='rate']")
+	@FindBy(xpath = "(//input[@formcontrolname='rate'])[1]")
 	WebElement tableRateField ;	
 
-	@FindBy(xpath = "//mat-select[@formcontrolname='applicable_factor']")
+	@FindBy(xpath = "(//mat-select[@formcontrolname='applicable_factor'])[1]")
 	WebElement applicableFactorDropDown ;
 
 	@FindBy(xpath = "//i[@class='fas fa-plus']")
 	WebElement actionColumnPlusIcon ;
 
-	@FindBy(xpath = "(//i[contains(@class,'fa-pencil')])[2]")
+	@FindBy(xpath = "(//i[@ng-reflect-klass='fas'])[1]")
 	WebElement actionColumnEditIcon ;
 
 	@FindBy(xpath = "//textarea[@placeholder='Description']")
@@ -176,13 +176,13 @@ public class CommercialsPage extends TestBase{
 	@FindBy(xpath = "(//input[@formcontrolname='description_table'])[1]")
 	WebElement tableDescriptionField ;
 
-	@FindBy(xpath = "//input[@formcontrolname='effective_date']")
+	@FindBy(xpath = "(//input[@formcontrolname='effective_date'])[1]")
 	WebElement effectiveDateField ;
 
 	@FindBy(xpath = "//mat-select[@formcontrolname='uom']")
 	WebElement tableUOMDropDown ;
 
-	@FindBy(xpath = "//input[@formcontrolname='quantity']")
+	@FindBy(xpath = "(//input[@formcontrolname='quantity'])[1]")
 	WebElement tableQuantityField ;
 
 	@FindBy(xpath = "(//input[@formcontrolname='description_table'])[2]")
@@ -246,11 +246,11 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public void enterBillingStartDate(String billingStartDate) {
-		calendar.selectDateNew(billingStartDateField, billingStartDate);
+		calendar.selectDate(billingStartDateField, billingStartDate);
 	}
 
 	public void enterBillingEndDate(String billingEndDate) {
-		calendar.selectDateNew(billingEndDateField, billingEndDate);
+		calendar.selectDate(billingEndDateField, billingEndDate);
 	}
 
 	public void selectBillingCurrency(String billingCurrency) {
@@ -309,7 +309,7 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public CommercialsPage clickUOMPlusIcon() {
-		clickElement(uomDropDownPlusIcon);
+		clickElementUsingJS(uomDropDownPlusIcon);
 		return this ;
 	}
 
@@ -320,7 +320,9 @@ public class CommercialsPage extends TestBase{
 
 	public CommercialsPage addUOM(String uomName) {
 		clickUOMPlusIcon();
+		sleep(500);
 		enterName(uomName);
+		sleep(500);
 		clickElement(addPopupSaveButton);
 		return this;
 	}
@@ -330,11 +332,11 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public void enterEffectiveStartDate(String effStartDate) {
-		calendar.selectDateNew(effectiveStartDateField, effStartDate);
+		calendar.selectDate(effectiveStartDateField, effStartDate);
 	}
 
 	public void enterEffectiveEndDate(String effEndDate) {
-		calendar.selectDateNew(effectiveEndDateField, effEndDate);
+		calendar.selectDate(effectiveEndDateField, effEndDate);
 	}
 
 	public void enterReferenceNo(String referenceNo) {
@@ -346,13 +348,15 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public CommercialsPage clickLinkedOpportunityPlusIcon() {
-		clickElement(linkedOpportunityDropDownPlusIcon);
+		clickElementUsingJS(linkedOpportunityDropDownPlusIcon);
 		return this ;
 	}
 
 	public CommercialsPage addLinkedOpportunity(String linkedOpportunityName) {
 		clickLinkedOpportunityPlusIcon();
+		sleep(500);
 		enterName(linkedOpportunityName);
+		sleep(500);
 		clickElement(addPopupSaveButton);
 		return this;
 	}
@@ -368,13 +372,15 @@ public class CommercialsPage extends TestBase{
 
 	public CommercialsPage clickServicePlusIcon() {
 		scrollIntoView(platformsApplicableField);
-		clickElement(serviceDropDownPlusIcon);
+		clickElementUsingJS(serviceDropDownPlusIcon);
 		return this ;
 	}
 
 	public CommercialsPage addService(String serviceName) {
 		clickServicePlusIcon();
+		sleep(500);
 		enterName(serviceName);
+		sleep(500);
 		clickElement(addPopupSaveButton);
 		return this;
 	}
@@ -384,27 +390,31 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public CommercialsPage clickSubServicePlusIcon() {
-		clickElement(subServiceDropDownPlusIcon);
+		scrollIntoView(platformsApplicableField);
+		clickElementUsingJS(subServiceDropDownPlusIcon);
 		return this ;
 	}
 
 	public CommercialsPage addSubService(String subServiceName) {
-		scrollIntoView(platformsApplicableField);
 		clickSubServicePlusIcon();
+		sleep(500);
 		enterName(subServiceName);
+		sleep(500);
 		clickElement(addPopupSaveButton);
 		return this;
 	}
 
 	public CommercialsPage clickProjectPlusIcon() {
-		clickElement(projectDropDownPlusIcon);
+		scrollIntoView(platformsApplicableField);
+		clickElementUsingJS(projectDropDownPlusIcon);
 		return this ;
 	}
 
 	public CommercialsPage addProject(String projectName) {
-		scrollIntoView(platformsApplicableField);
 		clickProjectPlusIcon();
+		sleep(500);
 		enterName(projectName);
+		sleep(500);
 		clickElement(addPopupSaveButton);
 		return this;
 	}
@@ -444,6 +454,7 @@ public class CommercialsPage extends TestBase{
 
 	public CommercialsPage clickOnEditIcon(String lineItemName) {
 		WebElement element = driver.findElement(By.xpath("//span[contains(@title,'"+lineItemName+"')]//following::i[contains(@class,'pencil')]"));
+		sleep(1000);
 		clickElement(element);
 		return this ;
 	}
@@ -554,7 +565,7 @@ public class CommercialsPage extends TestBase{
 	}
 
 	public CommercialsPage enterEffectiveDate(String effDate) {
-		calendar.selectDateNew(effectiveDateField, effDate);
+		calendar.selectDate(effectiveDateField, effDate);
 		return this;
 	}
 

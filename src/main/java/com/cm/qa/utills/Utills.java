@@ -6,9 +6,10 @@ import java.util.Set;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import cm.cm.qa.base.TestBase;
 
-public class Utills extends TestBase{
+import cm.cm.qa.base.ActionClass;
+
+public class Utills extends ActionClass{
 
 	@FindBy(xpath = "//div[contains(@class,'toast-success')]")
 	WebElement successToaster ; 
@@ -49,6 +50,7 @@ public class Utills extends TestBase{
 
 	public String readFieldErrorMessage() {
 		customVisibleWait(fieldError) ;
+		scrollIntoView(fieldError);
 		String errorMessage = fieldError.getText() ;
 		return errorMessage ;
 	}
@@ -64,7 +66,4 @@ public class Utills extends TestBase{
 			}
 		}
 	}
-
-
-
 }

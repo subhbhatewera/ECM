@@ -7,25 +7,26 @@ import org.openqa.selenium.support.PageFactory;
 import com.cm.qa.utills.Outlook;
 import com.cm.qa.utills.Utills;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class OTPLoginPage extends TestBase {
-
+public class OTPLoginPage extends ActionClass {
+	
 	Utills utills; 
 	Outlook outlook ;
-
+	
 	@FindBy(xpath = "//span[contains(text(),'Submit')]")
 	WebElement submitButton ;
-
+	
 	public OTPLoginPage () {
 		PageFactory.initElements(driver,  this);
 	}
-
+	
 	public void clickSubmitButton() {
 		customVisibleWait(submitButton);
+		sleep(1000);
 		submitButton.click();
 	}
-
+	
 	public DashboardPage OTPLogin(String uName, String pwd) {
 		utills = new Utills() ;
 		outlook = new Outlook() ;
@@ -42,7 +43,7 @@ public class OTPLoginPage extends TestBase {
 		clickSubmitButton();
 		return new DashboardPage() ;
 	}
-
+	
 	public void enterWrongOTP() {
 		for(int i = 0 ; i < 6 ; i++) {
 			WebElement element = driver.findElement(By.xpath("//input[@formcontrolname='digitFormControlName"+(i+1)+"']"));
@@ -50,4 +51,6 @@ public class OTPLoginPage extends TestBase {
 			element.sendKeys("0");
 		}
 	}
+	
+
 }

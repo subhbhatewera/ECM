@@ -7,9 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.cm.qa.utills.Calendar;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class OtherCommercialTermsPage extends TestBase{
+public class OtherCommercialTermsPage extends ActionClass{
 
 	Calendar calendar = new Calendar(); 
 
@@ -120,11 +120,13 @@ public class OtherCommercialTermsPage extends TestBase{
 	}
 
 	public OtherCommercialTermsPage clickOnCOLATab() {
+		sleep(1000);
 		clickElement(colaTab);
 		return this ;
 	}
 
 	public void enterClause(String clause) {
+		sleep(1000);
 		writeText(clauseField, clause);
 	}
 
@@ -137,7 +139,7 @@ public class OtherCommercialTermsPage extends TestBase{
 	}
 
 	public void enterApplicableFromDate(String applicableFromDate) {
-		calendar.selectDateNew(applicableFromField, applicableFromDate);
+		calendar.selectDate(applicableFromField, applicableFromDate);
 	}
 
 	public void selectRevisionFrequency(String revisionFrequency) {
@@ -199,16 +201,17 @@ public class OtherCommercialTermsPage extends TestBase{
 	}
 
 	public OtherCommercialTermsPage clickOnIncentiveTab() {
+		sleep(1000);
 		clickElement(incentiveTab);
 		return this;
 	}
 
 	public void enterDateFrom(String dateFrom) {
-		calendar.selectDateNew(dateFromField, dateFrom);
+		calendar.selectDate(dateFromField, dateFrom);
 	}
 
 	public void enterDateTo(String dateTo) {
-		calendar.selectDateNew(dateToField, dateTo);
+		calendar.selectDate(dateToField, dateTo);
 	}
 
 	public OtherCommercialTermsPage fillIncentiveForm(String clause, String referenceNo, String percentageValue, String type, String dateFrom, 
@@ -227,6 +230,7 @@ public class OtherCommercialTermsPage extends TestBase{
 	}
 
 	public OtherCommercialTermsPage clickOnPenaltyTab() {
+		sleep(1000);
 		clickElement(penaltyTab);
 		return this;
 	}
@@ -255,6 +259,7 @@ public class OtherCommercialTermsPage extends TestBase{
 	}
 
 	public OtherCommercialTermsPage clickOnEarlyPaymentDiscountTab() {
+		sleep(1000);
 		clickElement(earlyPaymentDiscountTab);
 		return this;
 	}
@@ -264,7 +269,7 @@ public class OtherCommercialTermsPage extends TestBase{
 	}
 
 	public void enterBillingCycle(String billingCycleDate) {
-		calendar.selectDateNew(billingCycleField, billingCycleDate);
+		calendar.selectDate(billingCycleField, billingCycleDate);
 	}
 
 	public OtherCommercialTermsPage fillEarlyPaymentDiscountForm(String clause, String referenceNo, String relatedReferenceNo, String percentageValue, 
@@ -283,12 +288,13 @@ public class OtherCommercialTermsPage extends TestBase{
 	}
 
 	public OtherCommercialTermsPage clickOnLatePaymentFeeTab() {
+		sleep(1000);
 		clickElement(latePaymentFeeTab);
 		return this;
 	}
 
 	public void enterInvoiceDate(String invoiceDate) {
-		calendar.selectDateNew(invoiceDateField, invoiceDate);
+		calendar.selectDate(invoiceDateField, invoiceDate);
 	}
 
 	public void selectCurrency(String currency) {
@@ -315,6 +321,7 @@ public class OtherCommercialTermsPage extends TestBase{
 	}
 
 	public OtherCommercialTermsPage clickOnTerminationTab() {
+		sleep(1000);
 		clickElement(terminationTab);
 		return this;
 	}
@@ -341,6 +348,7 @@ public class OtherCommercialTermsPage extends TestBase{
 	}
 
 	public OtherCommercialTermsPage clickOnLimitationOfLiabilityTab() {
+		sleep(1000);
 		clickElement(limitationOfLiabilityTab);
 		return this;
 	}

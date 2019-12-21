@@ -7,9 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.cm.qa.utills.Calendar;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class SLAPage extends TestBase{
+public class SLAPage extends ActionClass{
 
 	Calendar calendar = new Calendar();
 
@@ -79,26 +79,31 @@ public class SLAPage extends TestBase{
 	}
 
 	public SLAPage clickOnSLATab() {
+		sleep(500);
 		clickElement(SLATab);
 		return this;
 	}
 
 	public SLAPage clickOnTATTab() {
+		sleep(500);
 		clickElement(TATTab);
 		return this;
 	}
 
 	public SLAPage clickOnQualityab() {
+		sleep(500);
 		clickElement(qualityTab);
 		return this;
 	}
 
 	public SLAPage clickOnUptimeTab() {
+		sleep(500);
 		clickElement(uptimeTab);
 		return this;
 	}
 
 	public void enterClause(String clause) {
+		sleep(500);
 		writeText(clauseField, clause);
 	}
 
@@ -141,6 +146,7 @@ public class SLAPage extends TestBase{
 	}
 
 	public SLAPage clickOnSaveAndContinueButton() {
+		scrollIntoView(saveAndContinueButton);
 		clickElement(saveAndContinueButton);
 		return this;
 	}	
@@ -168,7 +174,7 @@ public class SLAPage extends TestBase{
 	}
 
 	public void enterDateReported(String dateReported) {
-		calendar.selectDateNew(dateReportedField, dateReported);
+		calendar.selectDate(dateReportedField, dateReported);
 	}
 
 	public void enterCQRValue(String CQRValue) {

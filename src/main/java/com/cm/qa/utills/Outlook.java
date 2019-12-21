@@ -5,9 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class Outlook extends TestBase{
+public class Outlook extends ActionClass{
 	
 	JavascriptExecutor js ;
 
@@ -52,12 +52,13 @@ public class Outlook extends TestBase{
 		outlookSignInButton.click();
 
 		//Open the OTP Email
+		sleep(1000);
 		cmAppFolder.click();
-		customClickableWait(otpEmailLink);
+		sleep(1000);
 		otpEmailLink.click();
 
 		//Fetch OTP from the Email
-		customVisibleWait(otpEmailBodyLink);
+		sleep(2000);
 		String OTP = otpEmailBodyLink.getText().replaceAll("[^0-9]", "") ;
 		return OTP ;
 	}

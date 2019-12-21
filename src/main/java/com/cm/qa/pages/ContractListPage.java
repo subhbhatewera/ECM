@@ -5,31 +5,32 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class ContractListPage extends TestBase{
+public class ContractListPage extends ActionClass{
 
 	//Page Factory - OR	
-	@FindBy(xpath = "//div[@class='heading' and contains(text(),'Contract List')]")
+	@FindBy(xpath = "(//*[text()='Contract List'])[2]")
 	WebElement contractListPageHeading ;
 
-	@FindBy(xpath = "//button[contains(text(),'Add Contract')]")
+	@FindBy(xpath = "(//button[text()=' Add Contract '])[2]")
 	WebElement addContractButton ;
 	
-	@FindBy(xpath = "//input[@placeholder='Search']")
+	@FindBy(xpath = "(//input[@placeholder='Search'])[2]")
 	WebElement globalSearchField ;
 
 	public ContractListPage() {
 		PageFactory.initElements(driver, this) ;
+	//	PageFactory.initElements(new AjaxElementLocatorFactory(driver, 15), this);
 	}
 
 	public String verifyContractListPageHeading() {
-		customVisibleWait(contractListPageHeading);
+		customClickableWait(contractListPageHeading);
 		return contractListPageHeading.getText() ;
 	}
 
 	public GeneralInformationPage clickOnAddContractButton() {
-		customClickableWait(addContractButton) ;
+		//customClickableWait(addContractButton) ;
 		addContractButton.click() ;
 		return new GeneralInformationPage() ;
 	}
@@ -41,9 +42,10 @@ public class ContractListPage extends TestBase{
 	
 	public GeneralInformationPage clickOnEditContractIcon(String contractTitle) {
 		serachContract(contractTitle);
+		WebElement element = driver.findElement(By.xpath("(//i[contains(@mattooltip,'Edit')])[1]"));
 		sleep(2000);
-		WebElement element = driver.findElement(By.xpath("(//i[@mattooltip='Edit'])[1]"));
-		element.click() ;
+		clickElement(element);
 		return new GeneralInformationPage() ;
 	}
+
 }

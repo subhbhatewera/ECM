@@ -1,4 +1,20 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.709 sec - in TestSuite
+Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 28.057 sec <<< FAILURE! - in TestSuite
+blankUsernameTest(com.cm.qa.testcases.UsernamePageTests)  Time elapsed: 1.005 sec  <<< FAILURE!
+java.lang.AssertionError: 
+expected [Must input username or email!
+Error] but found [Must Enter User Name
+User name not entered]
+	at com.cm.qa.testcases.UsernamePageTests.blankUsernameTest(UsernamePageTests.java:42)
+
+verifyFooterText(com.cm.qa.testcases.UsernamePageTests)  Time elapsed: 0.098 sec  <<< FAILURE!
+java.lang.AssertionError: 
+expected [Copyright © 2019 Exela Contract Management.
+All Rights Reserved.
+v0.0.8] but found [Copyright © 2019 Exela Contract Management.
+All Rights Reserved.
+v0.0.9]
+	at com.cm.qa.testcases.UsernamePageTests.verifyFooterText(UsernamePageTests.java:48)
+

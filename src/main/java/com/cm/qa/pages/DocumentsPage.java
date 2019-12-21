@@ -6,9 +6,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.cm.qa.utills.Calendar;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class DocumentsPage extends TestBase {
+public class DocumentsPage extends ActionClass {
 
 	Calendar calendar = new Calendar();
 
@@ -20,13 +20,13 @@ public class DocumentsPage extends TestBase {
 	WebElement addDocumentButton ;
 
 	@FindBy(xpath = "//input[@formcontrolname='inputDocumentTitle']")
-	WebElement docNameField ;
+	WebElement docTitleField ;
 
 	@FindBy(xpath = "//mat-select[@placeholder='Contract Type']")
 	WebElement contractTypeDropDown ;
 
-	@FindBy(xpath = "//input[@placeholder='Upload Date']")
-	WebElement uploadDateField ;
+	@FindBy(xpath = "//input[@placeholder='Start Date']")
+	WebElement startDateField ;
 
 	@FindBy(xpath = "//input[@placeholder='Signed Date']")
 	WebElement signedDateField ;
@@ -37,16 +37,16 @@ public class DocumentsPage extends TestBase {
 	@FindBy(xpath = "//input[@placeholder='Attachments']")
 	WebElement attachmentsField ;
 
-	@FindBy(id = "(//button[@class='cm-btn' and @id='cancel'])[2]")
+	@FindBy(xpath = "(//button[@class='cm-btn' and @id='cancel'])[2]")
 	WebElement popUpCancelButton ;
 
-	@FindBy(id = "(//button[@class='cm-btn' and contains(@id,'save')])[2]")
+	@FindBy(xpath = "//button[contains(text(),'Save')]")
 	WebElement popUpSaveButton ;
 
-	@FindBy(id = "(//button[@class='cm-btn' and @id='cancel'])[1]")
+	@FindBy(xpath = "(//button[@class='cm-btn' and @id='cancel'])[1]")
 	WebElement cancelButton ;
 
-	@FindBy(id = "(//button[@class='cm-btn' and contains(@id,'save')])[1]")
+	@FindBy(xpath = "//button[contains(text(),'Submit')]")
 	WebElement submitButton ;	
 
 	public DocumentsPage() {
@@ -63,18 +63,24 @@ public class DocumentsPage extends TestBase {
 		return this;
 	}
 	
+	public DocumentsPage enterDocTitle(String docTitle) {
+		sleep(500);
+		writeText(docTitleField, docTitle);
+		return this;
+	}
+	
 	public DocumentsPage selectContractType(String contractType) {
 		selectDropDownOption(contractTypeDropDown, contractType);
 		return this;
 	}
 
-	public DocumentsPage enterUploadDate(String uploadDate) {
-		calendar.selectDateNew(uploadDateField, uploadDate);
+	public DocumentsPage enterStartDate(String uploadDate) {
+		calendar.selectDate(startDateField, uploadDate);
 		return this;
 	}
 
 	public DocumentsPage enterSignedDate(String signedDate) {
-		calendar.selectDateNew(signedDateField, signedDate);
+		calendar.selectDate(signedDateField, signedDate);
 		return this;
 	}
 
@@ -89,10 +95,22 @@ public class DocumentsPage extends TestBase {
 	//	setReadOnlyFalse(attachmentsField);
 	//	writeText(attachmentsField, imagePath);
 	}
+	
+	public DocumentsPage clickOnSaveButton() {		
+		clickElement(popUpSaveButton);
+		return this;
+	}
+	
+	public DocumentsPage clickOnSubmitButton() {
+		sleep(2000);
+		submitButton.click();
+		return this ;
+	}
 
-	public DocumentsPage fillDocumentForm(String contractType, String uploadDate, String signedDate, String status, String imagePath) {
+	public DocumentsPage fillDocumentForm(String docTitle, String contractType, String startDate, String signedDate, String status, String imagePath) {
+		enterDocTitle(docTitle);
 		selectContractType(contractType);
-		enterUploadDate(uploadDate);
+		enterStartDate(startDate);
 		enterSignedDate(signedDate);
 		selectStatus(status);
 		selectAttachment(imagePath);

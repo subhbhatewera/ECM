@@ -4,12 +4,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class DashboardPage extends TestBase{
+public class DashboardPage extends ActionClass{
 
 	//Page Factory - OR	
-	@FindBy(xpath = "//div[@class='heading' and contains(text(),'Dashboard')]")
+	@FindBy(xpath = "(//div[@class='heading' and contains(text(),'Dashboard')])[2]")
 	public WebElement dashboardHeading ;
 
 	@FindBy(xpath = "//a[@ng-reflect-message='Dashboard']")
@@ -43,16 +43,17 @@ public class DashboardPage extends TestBase{
 	WebElement logOutLink ;
 
 	public DashboardPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(driver, this);		
 	}
 
-	public String verifyDashboardPageHeading() {
-		customVisibleWait(dashboardHeading) ;
+	public String verifyDashboardPageHeading() {		
+		//sleep(7000);
+		customClickableWait(dashboardHeading);
 		return dashboardHeading.getText() ;
 	}
 
 	public ContractListPage clickOnContractListLink() {
-		customVisibleWait(toggleIcon) ;
+		sleep(3000);
 		clickElement(toggleIcon);
 		clickElement(contractsLink);
 		clickElement(contractsListLink);
@@ -65,8 +66,8 @@ public class DashboardPage extends TestBase{
 	}
 
 	public DocSearchPage clickOnDosSearchLink() {
-		customVisibleWait(toggleIcon) ;
 		clickElement(toggleIcon);
+		clickElement(contractsLink);
 		clickElement(docSearchLink);
 		return new DocSearchPage() ;
 	}
@@ -77,7 +78,7 @@ public class DashboardPage extends TestBase{
 	}
 
 	public NotificationPage gotoNotificationPage() {
-		clickElement(notificationLink);
+		notificationLink.click() ;
 		return new NotificationPage() ;
 	}
 

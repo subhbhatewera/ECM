@@ -4,12 +4,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class DocSearchPage extends TestBase {
+public class DocSearchPage extends ActionClass {
 
 	//Page Factory - OR
-	@FindBy(xpath = "//div[@class='heading' and contains(text(),'Doc Search')]")
+	@FindBy(xpath = "(//div[@class='heading' and contains(text(),'Doc Search')])[2]")
 	WebElement docSearchPageHeading ;
 
 	public DocSearchPage () {
@@ -17,7 +17,7 @@ public class DocSearchPage extends TestBase {
 	}
 
 	public String verifyDocSearchPageHeading() {
-		customVisibleWait(docSearchPageHeading) ;
+		customClickableWait(docSearchPageHeading) ;
 		return docSearchPageHeading.getText() ;
 	}
 

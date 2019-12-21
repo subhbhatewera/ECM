@@ -4,12 +4,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class GeneralInformationPage extends TestBase {
+public class GeneralInformationPage extends ActionClass {
 
 	//Page Factory - OR
-	@FindBy(xpath = "//div[@class='heading' and contains(text(),'Add Contract')]")
+	@FindBy(xpath = "(//*[text()='Add Contract'])[3]")
 	WebElement addContractHeading ;
 
 	@FindBy(xpath = "//div[@class='heading' and contains(text(),'Edit Contract')]")
@@ -19,7 +19,7 @@ public class GeneralInformationPage extends TestBase {
 	WebElement generalInformationTab ;
 
 	@FindBy(xpath = "//mat-select[@placeholder='Category']")
-	WebElement categoryDropDown ;
+	public	WebElement categoryDropDown ;
 
 	@FindBy(xpath = "(//i[contains(@class,'plus-circle')])[1]")
 	WebElement categoryDropDownPlusIcon ;
@@ -27,20 +27,20 @@ public class GeneralInformationPage extends TestBase {
 	@FindBy(xpath = "//input[@placeholder='Name']")
 	WebElement addPopupNameField ;
 
-	@FindBy(xpath = "//span[contains(text(),'Save')]")
+	@FindBy(xpath = "//span[contains(@class,'mat-button') and contains(text(),'Save')]")
 	WebElement addPopupSaveButton ;
 
 	@FindBy(xpath = "//span[contains(text(),'Cancel')]")
 	WebElement addPopupCancelButton ;	
 
 	@FindBy(xpath = "//mat-select[@placeholder='Sub Category']")
-	WebElement subCategoryDropDown ;
+	public WebElement subCategoryDropDown ;
 
 	@FindBy(xpath = "(//i[contains(@class,'plus-circle')])[2]")
 	WebElement subCategoryDropDownPlusIcon ;
 
 	@FindBy(xpath = "//mat-select[@placeholder='Business Partner']")
-	WebElement businessPartnerDropDown ;
+	public WebElement businessPartnerDropDown ;
 
 	@FindBy(xpath = "(//i[contains(@class,'plus-circle')])[3]")
 	WebElement businessPartnerDropDownPlusIcon ;
@@ -58,8 +58,8 @@ public class GeneralInformationPage extends TestBase {
 	WebElement contractValueField ;
 
 	@FindBy(xpath = "//mat-select[@placeholder='Legal Entity']")
-	WebElement legalEntityDropDown ;
-
+	public WebElement legalEntityDropDown ;
+	
 	@FindBy(xpath = "(//i[contains(@class,'plus-circle')])[4]")
 	WebElement legalEntityDropDownPlusIcon ;
 
@@ -88,25 +88,30 @@ public class GeneralInformationPage extends TestBase {
 	}
 
 	public void openAddCategoryPopup() {
-		clickElement(categoryDropDownPlusIcon);
+		sleep(2000);
+		clickElementUsingJS(categoryDropDownPlusIcon);
 	}
 
 	public void enterName(String name) {
 		writeText(addPopupNameField, name);	
-	}
+	}	
 
-	public void clickAddPopupCancelButton() {
+	public void clickOnAddPopupSaveButton() {
+		clickElement(addPopupSaveButton);		
+	}
+	
+	public void clickOnAddPopupCancelButton() {
+		sleep(1000);
+		customClickableWait(addPopupCancelButton);
 		clickElement(addPopupCancelButton);
-	}
-
-	public void clickAddPopupSaveButton() {
-		clickElement(addPopupSaveButton);	
 	}
 
 	public void addNewCategory(String categoryName) {
 		openAddCategoryPopup();
+		sleep(1000);
 		enterName(categoryName);
-		clickAddPopupSaveButton();
+		sleep(1000);
+		clickOnAddPopupSaveButton();
 	}
 
 	public void selectSubCategory(String subCategory) {
@@ -114,13 +119,15 @@ public class GeneralInformationPage extends TestBase {
 	}
 
 	public void openAddSubCategoryPopup() {
-		clickElement(subCategoryDropDownPlusIcon);
+		clickElementUsingJS(subCategoryDropDownPlusIcon);
 	}
 
 	public void addNewSubCategory(String subCategoryName) {
 		openAddSubCategoryPopup();
+		sleep(1000);
 		enterName(subCategoryName);
-		clickAddPopupSaveButton();
+		sleep(1000);
+		clickOnAddPopupSaveButton();
 	}
 
 	public void selectBusinessPartner(String businessPartner) {
@@ -128,15 +135,17 @@ public class GeneralInformationPage extends TestBase {
 	}
 
 	public void openAddBusinessPartnerPopup() {
-		clickElement(businessPartnerDropDownPlusIcon);
+		clickElementUsingJS(businessPartnerDropDownPlusIcon);
 	}
 
 	public void addNewBusinessPartner(String businessPartnerName) {
 		openAddBusinessPartnerPopup();
+		sleep(1000);
 		enterName(businessPartnerName);
-		clickAddPopupSaveButton();
+		sleep(1000);
+		clickOnAddPopupSaveButton();
 	}
-
+	
 	public void enterContractTitle(String contractTitle) {
 		writeText(contractTitleField, contractTitle);
 	}
@@ -144,7 +153,7 @@ public class GeneralInformationPage extends TestBase {
 	public void enterLocation(String location) {
 		selectLocation(locationField, location);
 	}
-
+	
 	public GeneralInformationPage enterInvalidLocation(String location) {
 		writeText(locationField, location);
 		return this;
@@ -163,23 +172,26 @@ public class GeneralInformationPage extends TestBase {
 	public void selectLegalEntity(String legalEntity) {
 		selectDropDownOption(legalEntityDropDown, legalEntity);
 	}
-
+	
 	public void openAddLegalEntityPopup() {
-		clickElement(legalEntityDropDownPlusIcon);
+		clickElementUsingJS(legalEntityDropDownPlusIcon);
 	}
 
 	public void addNewLegalEntity(String legalEntityName) {
 		openAddLegalEntityPopup();
+		sleep(1000);
 		enterName(legalEntityName);
-		clickAddPopupSaveButton();
+		sleep(1000);
+		clickOnAddPopupSaveButton();
 	}
 
 	public void clickOnCancelButton() {
 		clickElement(generalInformationCancelButton);
 	}
 
-	public void clickOnSaveAndContinueButton() {
+	public GeneralInformationPage clickOnSaveAndContinueButton() {
 		clickElement(generalInformationSaveAndContinueButton);
+		return this;
 	}
 
 	public GeneralInformationPage fillGeneralInformationForm(String category, String subCategory, String businessPartner, String contractTitle, 
@@ -194,4 +206,5 @@ public class GeneralInformationPage extends TestBase {
 		selectLegalEntity(legalEntity);
 		return this;
 	}
+
 }

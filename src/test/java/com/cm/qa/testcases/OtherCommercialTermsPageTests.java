@@ -5,27 +5,14 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-
-import com.cm.qa.pages.ContractListPage;
-import com.cm.qa.pages.DashboardPage;
-import com.cm.qa.pages.GeneralInformationPage;
 import com.cm.qa.pages.OtherCommercialTermsPage;
-import com.cm.qa.pages.PasswordPage;
 import com.cm.qa.pages.UsernamePage;
 import com.cm.qa.utills.DataProviderClass;
 import com.cm.qa.utills.Utills;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class OtherCommercialTermsPageTests extends TestBase{
-
-	UsernamePage uName ;
-	PasswordPage pwd ;
-	Utills utills ;
-	DashboardPage dashboard ;
-	ContractListPage contractList ;
-	GeneralInformationPage generalInformation ;
-	OtherCommercialTermsPage otherCommercials ;
+public class OtherCommercialTermsPageTests extends ActionClass{
 
 	public OtherCommercialTermsPageTests() {
 		super() ;
@@ -38,7 +25,8 @@ public class OtherCommercialTermsPageTests extends TestBase{
 		utills = new Utills() ;
 		otherCommercials = new OtherCommercialTermsPage() ;
 		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
-		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;		
+		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;
+		sleep(7000);		
 	}
 
 	@Test(priority = 71, dataProvider = "cola", dataProviderClass = DataProviderClass.class)
@@ -52,7 +40,7 @@ public class OtherCommercialTermsPageTests extends TestBase{
 		.fillCOLAForm(clause, type, indexType, applicableFrom, revisionFrequency, noticePeriodValue, noticePeriodDuration, percentage, 
 				status, referenceNo,relatedReferenceNo, reminder)
 		.clickOnSaveAndContinueButton();
-		Assert.assertEquals(utills.readSuccessMessage(), "Contract successfully updated\n"+"Operation Success");
+		Assert.assertEquals(utills.readSuccessMessage(), "COLA successfully updated\n"+"Operation Complete");
 	}	
 
 	@Test(priority = 72, dataProvider = "incentive", dataProviderClass = DataProviderClass.class)
@@ -64,7 +52,7 @@ public class OtherCommercialTermsPageTests extends TestBase{
 		.clickOnIncentiveTab()
 		.fillIncentiveForm(clause, referenceNo, percentage, type, dateFrom, dateTo, status, noticePeriodValue, noticePeriodDuration, reminder)
 		.clickOnSaveAndContinueButton();
-		Assert.assertEquals(utills.readSuccessMessage(), "Contract successfully updated\n"+"Operation Success");
+		Assert.assertEquals(utills.readSuccessMessage(), "Incentive successfully updated\n"+"Operation Complete");
 	}
 
 	@Test(priority = 73, dataProvider = "penalty", dataProviderClass = DataProviderClass.class)
@@ -76,7 +64,7 @@ public class OtherCommercialTermsPageTests extends TestBase{
 		.clickOnPenaltyTab()
 		.fillPenaltyForm(clause, referenceNo, relatedReferenceNo, percentage, type, dateFrom, dateTo, status, reminder)
 		.clickOnSaveAndContinueButton();
-		Assert.assertEquals(utills.readSuccessMessage(), "Contract successfully updated\n"+"Operation Success");
+		Assert.assertEquals(utills.readSuccessMessage(), "Penalty successfully updated\n"+"Operation Complete");
 	}		
 
 	@Test(priority = 74, dataProvider = "earlyPaymentDiscount", dataProviderClass = DataProviderClass.class)
@@ -88,7 +76,7 @@ public class OtherCommercialTermsPageTests extends TestBase{
 		.clickOnEarlyPaymentDiscountTab()
 		.fillEarlyPaymentDiscountForm(clause, referenceNo, relatedReferenceNo, percentage, value, billingCycle,dateFrom, dateTo, status, reminder)
 		.clickOnSaveAndContinueButton();
-		Assert.assertEquals(utills.readSuccessMessage(), "Contract successfully updated\n"+"Operation Success");
+		Assert.assertEquals(utills.readSuccessMessage(), "Early Payment Discount successfully updated\n"+"Operation Complete");
 	}
 
 	@Test(priority = 75, dataProvider = "latePaymentFee", dataProviderClass = DataProviderClass.class)
@@ -100,7 +88,7 @@ public class OtherCommercialTermsPageTests extends TestBase{
 		.clickOnLatePaymentFeeTab()
 		.fillLatePaymentFeeForm(clause, referenceNo, relatedReferenceNo, invoiceDate, noticePeriodValue, noticePeriodDuration, currency, penaltyValue, status, reminder)
 		.clickOnSaveAndContinueButton();
-		Assert.assertEquals(utills.readSuccessMessage(), "Contract successfully updated\n"+"Operation Success");
+		Assert.assertEquals(utills.readSuccessMessage(), "Late Payment Fee successfully updated\n"+"Operation Complete");
 	}
 
 	@Test(priority = 76, dataProvider = "termination", dataProviderClass = DataProviderClass.class)
@@ -112,7 +100,7 @@ public class OtherCommercialTermsPageTests extends TestBase{
 		.clickOnTerminationTab()
 		.fillTerminationForm(clause, type, noticePeriodValue, noticePeriodDuration, term, status, referenceNo, dateFrom, dateTo, currency, value, reminder)
 		.clickOnSaveAndContinueButton();
-		Assert.assertEquals(utills.readSuccessMessage(), "Contract successfully updated\n"+"Operation Success");
+		Assert.assertEquals(utills.readSuccessMessage(), "Termination successfully updated\n"+"Operation Complete");
 	}
 
 	@Test(priority = 77, dataProvider = "limitationofLiability", dataProviderClass = DataProviderClass.class)
@@ -123,11 +111,12 @@ public class OtherCommercialTermsPageTests extends TestBase{
 		.clickOnLimitationOfLiabilityTab()
 		.fillLimitationOfLiabilityForm(clause, type, currency, value, referenceNo)
 		.clickOnSaveAndContinueButton();
-		Assert.assertEquals(utills.readSuccessMessage(), "Contract successfully updated\n"+"Operation Success");
+		Assert.assertEquals(utills.readSuccessMessage(), "Limitation of Liability successfully updated\n"+"Operation Complete");
 	}	
 
 	@AfterClass
 	public void tearDown() {
-		driver.quit();
+		driver.close();
 	}
+
 }

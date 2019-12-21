@@ -5,26 +5,14 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.cm.qa.pages.ContractListPage;
-import com.cm.qa.pages.DashboardPage;
-import com.cm.qa.pages.GeneralInformationPage;
-import com.cm.qa.pages.PasswordPage;
 import com.cm.qa.pages.SLAPage;
 import com.cm.qa.pages.UsernamePage;
 import com.cm.qa.utills.DataProviderClass;
 import com.cm.qa.utills.Utills;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class SLAPageTests extends TestBase{
-
-	UsernamePage uName ;
-	PasswordPage pwd ;
-	Utills utills ;
-	DashboardPage dashboard ;
-	ContractListPage contractList ;
-	GeneralInformationPage generalInformation ;
-	SLAPage sla ;
+public class SLAPageTests extends ActionClass{
 
 	public SLAPageTests() {
 		super() ;
@@ -38,6 +26,7 @@ public class SLAPageTests extends TestBase{
 		sla = new SLAPage();
 		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
 		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;
+		sleep(5000);
 	}
 
 	@Test(priority = 81, dataProvider = "tat", dataProviderClass = DataProviderClass.class)
@@ -48,7 +37,7 @@ public class SLAPageTests extends TestBase{
 		sla.clickOnSLATab()
 		.fillTATForm(clause, referenceNo, relatedReferenceNo, status, currency,performancePay, type, hours, reminder)
 		.clickOnSaveAndContinueButton();
-		Assert.assertEquals(utills.readSuccessMessage(), "Contract successfully updated\n"+"Operation Success");
+		Assert.assertEquals(utills.readSuccessMessage(), "TAT successfully updated\n"+"Operation Complete");
 	}
 
 	@Test(priority = 82, dataProvider = "quality", dataProviderClass = DataProviderClass.class)
@@ -60,7 +49,7 @@ public class SLAPageTests extends TestBase{
 		.clickOnQualityab()
 		.fillQualityForm(clause, referenceNo, relatedReferenceNo, status, preShipment, CAL, dateReported, CQR, type, currency, performancePay, reminder)
 		.clickOnSaveAndContinueButton();
-		Assert.assertEquals(utills.readSuccessMessage(), "Contract successfully updated\n"+"Operation Success");
+		Assert.assertEquals(utills.readSuccessMessage(), "Quality successfully updated\n"+"Operation Complete");
 	}
 
 	@Test(priority = 83, dataProvider = "upTime", dataProviderClass = DataProviderClass.class)
@@ -72,11 +61,12 @@ public class SLAPageTests extends TestBase{
 		.clickOnUptimeTab()
 		.fillUptimeForm(clause, referenceNo, relatedReferenceNo, status, uptimeHours, type, currency, performancePay, reminder)
 		.clickOnSaveAndContinueButton();
-		Assert.assertEquals(utills.readSuccessMessage(), "Contract successfully updated\n"+"Operation Success");
+		Assert.assertEquals(utills.readSuccessMessage(), "Uptime successfully updated\n"+"Operation Complete");
 	}
 
 	@AfterClass
 	public void tearDown() {
-		driver.quit();
+		driver.close();
 	}
+
 }

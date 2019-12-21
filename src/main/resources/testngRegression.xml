@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Exela Contract Management Automation Suite">
+
+	<listeners>
+		<listener
+			class-name="com.cm.extentreportlistner.ExtentReportListner" />
+	</listeners>
+
+	<test name="Regression Test Cases">
+
+		<classes>
+			<class name="com.cm.qa.testcases.UsernamePageTests"></class>
+			<class name="com.cm.qa.testcases.PasswordPageTests"></class>
+			<class name="com.cm.qa.testcases.DashboardPageTests"></class>
+			<class name="com.cm.qa.testcases.GeneralInformationPageTests"></class>
+			<class name="com.cm.qa.testcases.TermPageTests"></class>
+			<class name="com.cm.qa.testcases.CommercialsPageTests"></class>
+			<class name="com.cm.qa.testcases.OtherCommercialTermsPageTests"></class>
+			<class name="com.cm.qa.testcases.SLAPageTests"></class>
+			<class name="com.cm.qa.testcases.ContactPersonsPageTests"></class>
+			<class name="com.cm.qa.testcases.DocumentsPageTests"></class>
+			<class name="com.cm.qa.testcases.NotificationPageTests"></class>
+		</classes>
+
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
+

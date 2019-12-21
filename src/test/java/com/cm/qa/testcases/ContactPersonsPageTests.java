@@ -6,25 +6,13 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.cm.qa.pages.ContactPersonsPage;
-import com.cm.qa.pages.ContractListPage;
-import com.cm.qa.pages.DashboardPage;
-import com.cm.qa.pages.GeneralInformationPage;
-import com.cm.qa.pages.PasswordPage;
 import com.cm.qa.pages.UsernamePage;
 import com.cm.qa.utills.DataProviderClass;
 import com.cm.qa.utills.Utills;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class ContactPersonsPageTests extends TestBase{
-
-	UsernamePage uName ;
-	PasswordPage pwd ;
-	Utills utills ;
-	DashboardPage dashboard ;
-	ContractListPage contractList ;
-	GeneralInformationPage generalInformation ;
-	ContactPersonsPage contactPersons ;
+public class ContactPersonsPageTests extends ActionClass{
 
 	public ContactPersonsPageTests() {
 		super() ;
@@ -37,7 +25,8 @@ public class ContactPersonsPageTests extends TestBase{
 		utills = new Utills() ;
 		contactPersons = new ContactPersonsPage();
 		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
-		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;		
+		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;	
+		sleep(5000);
 	}
 
 	@Test(priority = 91, dataProvider = "contactPersonInvalidData", dataProviderClass = DataProviderClass.class)
@@ -59,7 +48,7 @@ public class ContactPersonsPageTests extends TestBase{
 		.clickOnAddButton()
 		.enterEmailID(email);
 		contactPersons.clickOnAddScreenSaveAndContinueButton();
-		Assert.assertEquals(utills.readFieldErrorMessage(), "Please enter a valid email id.");	
+		Assert.assertEquals(utills.readFieldErrorMessage(), "Please enter a valid email id.");
 	}
 
 	@Test(priority = 93, dataProvider = "contactPersonInvalidData", dataProviderClass = DataProviderClass.class)
@@ -71,7 +60,7 @@ public class ContactPersonsPageTests extends TestBase{
 		.selectCountry(country);
 		contactPersons.enterPhoneNumber(phoneNumber);
 		contactPersons.clickOnAddScreenSaveAndContinueButton();
-		Assert.assertEquals(utills.readFieldErrorMessage(), "Phone number is not valid");	
+		Assert.assertEquals(utills.readFieldErrorMessage(), "Phone number is not valid");
 	}
 
 	@Test(priority = 94, dataProvider = "function", dataProviderClass = DataProviderClass.class)
@@ -81,8 +70,8 @@ public class ContactPersonsPageTests extends TestBase{
 		contactPersons.clickOnContactPersonsTab()
 		.clickOnAddButton()
 		.addNewFunction(functionName);
-		Assert.assertEquals(utills.readSuccessMessage(), "Function successfully created\n"+"Operation Success");
-		Assert.assertEquals(contactPersons.getSelectDropDownOption(), functionName);
+		Assert.assertEquals(utills.readSuccessMessage(), "Function successfully added\n"+"Operation Complete");
+		Assert.assertEquals(contactPersons.getSelectedDropDownOption(), functionName);
 
 	}
 
@@ -93,9 +82,10 @@ public class ContactPersonsPageTests extends TestBase{
 		contactPersons.clickOnContactPersonsTab()
 		.clickOnAddButton()
 		.addNewFunction("CRM");
-		Assert.assertEquals(utills.readErrorMessage(), "CREATE: Error, Function with name CRM already exists!\n"+"Operation Success");
+		Assert.assertEquals(utills.readErrorMessage(), "Error: Function named CRM already exists!\n"+"Error");
+		contactPersons.clickOnAddPopUpCancelButton();
 	}
-
+	
 	@Test(priority = 96, dataProvider = "contractTitleContactPerson", dataProviderClass = DataProviderClass.class)
 	public void blankFunctionNameTest(String contractTitle) {
 		contractList = dashboard.gotoContractListPage() ;
@@ -104,6 +94,7 @@ public class ContactPersonsPageTests extends TestBase{
 		.clickOnAddButton()
 		.addNewFunction("");
 		Assert.assertEquals(utills.readFieldErrorMessage(), "Name is required");
+		contactPersons.clickOnAddPopUpCancelButton();
 	}
 
 	@Test(priority = 97, dataProvider = "addContactPerson", dataProviderClass = DataProviderClass.class)
@@ -114,9 +105,9 @@ public class ContactPersonsPageTests extends TestBase{
 		.clickOnAddButton()
 		.fillContactPersonForm(function, person, emailID, country, phoneNumber)
 		.clickOnAddScreenSaveAndContinueButton();
-		Assert.assertEquals(utills.readSuccessMessage(), "Contact person successfully added\n"+"Operation Success");
+		Assert.assertEquals(utills.readSuccessMessage(), "Contact person successfully added\n"+"Operation Complete");
 		contactPersons.clickOnListingScreenSaveAndContinueButton();
-		Assert.assertEquals(utills.readSuccessMessage(), "Contact Persons successfully saved\n"+"Operation Success");		
+		Assert.assertEquals(utills.readSuccessMessage(), "Contact Persons successfully updated\n"+"Operation Complete");		
 	}
 
 	@Test(priority = 98, dataProvider = "editContactPerson", dataProviderClass = DataProviderClass.class)
@@ -127,9 +118,9 @@ public class ContactPersonsPageTests extends TestBase{
 		.clickOnEditIcon()
 		.fillContactPersonForm(function, person, emailID, country, phoneNumber)
 		.clickOnAddScreenSaveAndContinueButton();
-		Assert.assertEquals(utills.readSuccessMessage(), "Contact person successfully updated\n"+"Operation Success");
+		Assert.assertEquals(utills.readSuccessMessage(), "Contact person successfully updated\n"+"Operation Complete");
 		contactPersons.clickOnListingScreenSaveAndContinueButton();
-		Assert.assertEquals(utills.readSuccessMessage(), "Contact Persons successfully saved\n"+"Operation Success");		
+		Assert.assertEquals(utills.readSuccessMessage(), "Contact Persons successfully updated\n"+"Operation Complete");		
 	}
 
 	@Test(priority = 99, dataProvider = "contractTitleContactPerson", dataProviderClass = DataProviderClass.class)
@@ -139,12 +130,12 @@ public class ContactPersonsPageTests extends TestBase{
 		contactPersons.clickOnContactPersonsTab()
 		.clickOnDeleteIcon()
 		.clickOnConfirmationPopUpYesButton();
-		Assert.assertEquals(utills.readSuccessMessage(), "Contact Person successfully deleted\n"+"Operation Success");		
+		Assert.assertEquals(utills.readSuccessMessage(), "Contact Person successfully deleted\n"+"Operation Complete");		
 	}	
 
 	@AfterClass
 	public void tearDown() {
-		driver.quit();
+		driver.close();
 	}
 
 }

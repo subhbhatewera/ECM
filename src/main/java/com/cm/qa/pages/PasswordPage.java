@@ -4,9 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class PasswordPage extends TestBase{
+public class PasswordPage extends ActionClass{
 
 	// Page Factory - OR
 	@FindBy(xpath = "//img[@title='Logo']")
@@ -18,14 +18,15 @@ public class PasswordPage extends TestBase{
 	@FindBy(id = "inputPassword")
 	WebElement passwordField ;
 
-	@FindBy(xpath = "//span[contains(text(),'Login')]")
+	@FindBy(xpath = "//button[contains(@class,'loginBtn')]")
 	WebElement loginButton ;
 
 	@FindBy(xpath = "//p[contains(text(),'OTP LOGIN')]")
 	WebElement otpLoginLink ;
-	
-	//Forgot password feature is removed
 
+	@FindBy(xpath = "//p[contains(text(),'FORGOT PASSWORD')]")
+	WebElement forgotPasswordLink ;
+	
 	@FindBy(xpath = "//p[@class='ng-tns-c2-0']")
 	WebElement footerText ;	
 
@@ -45,7 +46,7 @@ public class PasswordPage extends TestBase{
 	}
 	
 	public void enterPassword(String pwd) {
-		passwordField.sendKeys(pwd);
+		writeText(passwordField, pwd);
 	}
 	
 	public void clickLoginButton() {
@@ -56,6 +57,10 @@ public class PasswordPage extends TestBase{
 		customClickableWait(otpLoginLink);
 		otpLoginLink.click() ;
 		return new OTPLoginPage() ;
+	}
+	
+	public void clickForgotPasswordLink() {
+		forgotPasswordLink.click();
 	}
 	
 	public DashboardPage login(String pwd) {

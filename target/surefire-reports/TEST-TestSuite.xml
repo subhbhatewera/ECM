@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="21.709" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="28.057" tests="4" errors="0" skipped="0" failures="2">
   <properties>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="JOB_NAME" value="Contract Management"/>
@@ -7,11 +7,12 @@
     <property name="NUMBER_OF_PROCESSORS" value="4"/>
     <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
     <property name="JENKINS_HOME" value="C:\Users\subh\.jenkins"/>
+    <property name="FPS_BROWSER_USER_PROFILE_STRING" value="Default"/>
     <property name="HUDSON_SERVER_COOKIE" value="3a7d0335a2252f72"/>
     <property name="POM_ARTIFACTID" value="ECM"/>
     <property name="os.name" value="Windows 10"/>
     <property name="sun.boot.class.path" value="C:\Program Files (x86)\Java\jdk 1.8\lib\resources.jar;C:\Program Files (x86)\Java\jdk 1.8\lib\rt.jar;C:\Program Files (x86)\Java\jdk 1.8\lib\sunrsasign.jar;C:\Program Files (x86)\Java\jdk 1.8\lib\jsse.jar;C:\Program Files (x86)\Java\jdk 1.8\lib\jce.jar;C:\Program Files (x86)\Java\jdk 1.8\lib\charsets.jar;C:\Program Files (x86)\Java\jdk 1.8\lib\jfr.jar;C:\Program Files (x86)\Java\jdk 1.8\classes"/>
-    <property name="EXECUTOR_NUMBER" value="1"/>
+    <property name="EXECUTOR_NUMBER" value="0"/>
     <property name="sun.desktop" value="windows"/>
     <property name="PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
@@ -19,6 +20,7 @@
     <property name="NODE_LABELS" value="master"/>
     <property name="TEMP" value="C:\Users\subh\AppData\Local\Temp"/>
     <property name="java.runtime.version" value="1.8.0_231-b11"/>
+    <property name="FPS_BROWSER_APP_PROFILE_STRING" value="Internet Explorer"/>
     <property name="user.name" value="subh"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="CommonProgramW6432" value="C:\Program Files\Common Files"/>
@@ -26,8 +28,8 @@
     <property name="PROMPT" value="$P$G"/>
     <property name="user.language" value="en"/>
     <property name="JOB_BASE_NAME" value="Contract Management"/>
-    <property name="RUN_CHANGES_DISPLAY_URL" value="http://localhost:8080/job/Contract%20Management/11/display/redirect?page=changes"/>
-    <property name="BUILD_DISPLAY_NAME" value="#11"/>
+    <property name="RUN_CHANGES_DISPLAY_URL" value="http://localhost:8080/job/Contract%20Management/12/display/redirect?page=changes"/>
+    <property name="BUILD_DISPLAY_NAME" value="#12"/>
     <property name="OneDrive" value="C:\Users\subh\OneDrive"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk 1.8\bin"/>
     <property name="LOCALAPPDATA" value="C:\Users\subh\AppData\Local"/>
@@ -39,7 +41,7 @@
     <property name="NODE_NAME" value="master"/>
     <property name="PROCESSOR_ARCHITEW6432" value="AMD64"/>
     <property name="java.endorsed.dirs" value="C:\Program Files (x86)\Java\jdk 1.8\lib\endorsed"/>
-    <property name="BUILD_ID" value="11"/>
+    <property name="BUILD_ID" value="12"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="file.encoding.pkg" value="sun.io"/>
@@ -55,7 +57,7 @@
     <property name="java.home" value="C:\Program Files (x86)\Java\jdk 1.8"/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="os.version" value="10.0"/>
-    <property name="RUN_DISPLAY_URL" value="http://localhost:8080/job/Contract%20Management/11/display/redirect"/>
+    <property name="RUN_DISPLAY_URL" value="http://localhost:8080/job/Contract%20Management/12/display/redirect"/>
     <property name="POM_VERSION" value="0.0.1-SNAPSHOT"/>
     <property name="TMP" value="C:\Users\subh\AppData\Local\Temp"/>
     <property name="path.separator" value=";"/>
@@ -69,15 +71,15 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="CommonProgramFiles" value="C:\Program Files (x86)\Common Files"/>
     <property name="ComSpec" value="C:\WINDOWS\system32\cmd.exe"/>
-    <property name="HOMEPATH" value="\Users\subh"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="HOMEPATH" value="\Users\subh"/>
     <property name="POM_PACKAGING" value="jar"/>
     <property name="user.script" value=""/>
     <property name="COMPUTERNAME" value="DESKTOP-KAC3CU8"/>
     <property name="POM_GROUPID" value="ContractManagement"/>
     <property name="user.home" value="C:\Users\subh"/>
     <property name="PUBLIC" value="C:\Users\Public"/>
-    <property name="BUILD_TAG" value="jenkins-Contract Management-11"/>
+    <property name="BUILD_TAG" value="jenkins-Contract Management-12"/>
     <property name="JENKINS_SERVER_COOKIE" value="3a7d0335a2252f72"/>
     <property name="HUDSON_URL" value="http://localhost:8080/"/>
     <property name="ProgramData" value="C:\ProgramData"/>
@@ -91,7 +93,7 @@
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="maven.home" value="C:\Users\subh\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\Test_Maven"/>
     <property name="java.class.path" value="C:\Users\subh\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven35-agent-1.13.jar;C:\Users\subh\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\Test_Maven\boot\plexus-classworlds-2.6.0.jar;C:\Users\subh\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\Test_Maven/conf/logging"/>
-    <property name="sun.java.command" value="jenkins.maven3.agent.Maven35Main C:\Users\subh\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\Test_Maven C:\Users\subh\.jenkins\war\WEB-INF\lib\remoting-3.35.jar C:\Users\subh\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven35-interceptor-1.13.jar C:\Users\subh\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven3-interceptor-commons-1.13.jar 51649"/>
+    <property name="sun.java.command" value="jenkins.maven3.agent.Maven35Main C:\Users\subh\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\Test_Maven C:\Users\subh\.jenkins\war\WEB-INF\lib\remoting-3.35.jar C:\Users\subh\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven35-interceptor-1.13.jar C:\Users\subh\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven3-interceptor-commons-1.13.jar 54763"/>
     <property name="Path" value="C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\apache-maven-3.6.0\bin;C:\Program Files\Git\cmd;C:\Users\subh\AppData\Local\Microsoft\WindowsApps;"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="PROCESSOR_ARCHITECTURE" value="x86"/>
@@ -106,7 +108,7 @@
     <property name="HUDSON_HOME" value="C:\Users\subh\.jenkins"/>
     <property name="PATH+MAVEN" value="C:\Users\subh\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\Test_Maven/bin"/>
     <property name="ProgramFiles(x86)" value="C:\Program Files (x86)"/>
-    <property name="BUILD_URL" value="http://localhost:8080/job/Contract%20Management/11/"/>
+    <property name="BUILD_URL" value="http://localhost:8080/job/Contract%20Management/12/"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="os.arch" value="x86"/>
@@ -119,7 +121,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="MAVEN_HOME" value="C:\Users\subh\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\Test_Maven"/>
     <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
-    <property name="BUILD_NUMBER" value="11"/>
+    <property name="BUILD_NUMBER" value="12"/>
     <property name="JENKINS_URL" value="http://localhost:8080/"/>
     <property name="PROCESSOR_REVISION" value="2a07"/>
     <property name="VS150COMCOMNTOOLS" value="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\"/>
@@ -135,8 +137,24 @@
     <property name="PSModulePath" value="C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules"/>
     <property name="DriverData" value="C:\Windows\System32\Drivers\DriverData"/>
   </properties>
-  <testcase name="usernameScreenCMLogoImageTest" classname="com.cm.qa.testcases.UsernamePageTests" time="0.1"/>
-  <testcase name="blankUsernameTest" classname="com.cm.qa.testcases.UsernamePageTests" time="0.879"/>
-  <testcase name="verifyFooterText" classname="com.cm.qa.testcases.UsernamePageTests" time="0.123"/>
-  <testcase name="validUsernameTest" classname="com.cm.qa.testcases.UsernamePageTests" time="0.566"/>
+  <testcase name="usernameScreenCMLogoImageTest" classname="com.cm.qa.testcases.UsernamePageTests" time="0.118"/>
+  <testcase name="blankUsernameTest" classname="com.cm.qa.testcases.UsernamePageTests" time="1.005">
+    <failure message="expected [Must input username or email!&#10;Error] but found [Must Enter User Name&#10;User name not entered]" type="java.lang.AssertionError">java.lang.AssertionError: 
+expected [Must input username or email!
+Error] but found [Must Enter User Name
+User name not entered]
+	at com.cm.qa.testcases.UsernamePageTests.blankUsernameTest(UsernamePageTests.java:42)
+</failure>
+  </testcase>
+  <testcase name="verifyFooterText" classname="com.cm.qa.testcases.UsernamePageTests" time="0.098">
+    <failure message="expected [Copyright © 2019 Exela Contract Management.&#10;All Rights Reserved.&#10;v0.0.8] but found [Copyright © 2019 Exela Contract Management.&#10;All Rights Reserved.&#10;v0.0.9]" type="java.lang.AssertionError">java.lang.AssertionError: 
+expected [Copyright © 2019 Exela Contract Management.
+All Rights Reserved.
+v0.0.8] but found [Copyright © 2019 Exela Contract Management.
+All Rights Reserved.
+v0.0.9]
+	at com.cm.qa.testcases.UsernamePageTests.verifyFooterText(UsernamePageTests.java:48)
+</failure>
+  </testcase>
+  <testcase name="validUsernameTest" classname="com.cm.qa.testcases.UsernamePageTests" time="0.577"/>
 </testsuite>

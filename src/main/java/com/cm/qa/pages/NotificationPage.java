@@ -8,17 +8,17 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.cm.qa.utills.Calendar;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class NotificationPage extends TestBase {
+public class NotificationPage extends ActionClass {
 
 	Calendar calendar = new Calendar();
 
 	//Page Factory - OR
-	@FindBy(xpath = "//div[@class='heading' and contains(text(),'Notification')]")
+	@FindBy(xpath = "(//*[text()='Notification'])[3]")
 	WebElement notificationPageHeading ;
 
-	@FindBy(xpath = "//button[contains(@class,'cm-btn') and contains(text(),'Add')]")
+	@FindBy(xpath = "//button[text()=' Add ']")
 	WebElement addButton ;
 
 	@FindBy(xpath = "//input[@placeholder='Title']")
@@ -66,7 +66,7 @@ public class NotificationPage extends TestBase {
 	@FindBy(xpath = "//button[contains(@class,'cm-btn') and contains(text(),'Cancel')]")
 	WebElement cancelButton ;
 
-	@FindBy(xpath = "//button[contains(@class,'cm-btn') and contains(text(),'Save')]")
+	@FindBy(xpath = "//button[contains(text(),'Save')]")
 	WebElement saveButton ;
 
 	@FindBy(xpath = "//button[contains(@class,'accept')]")
@@ -99,7 +99,7 @@ public class NotificationPage extends TestBase {
 	}
 
 	public void enterDate(String date) {
-		calendar.selectDateNew(dateField, date);
+		calendar.selectDate(dateField, date);
 	}
 
 	public void selectLinkedContractInformation(String linkedContractInformation) {
@@ -157,11 +157,11 @@ public class NotificationPage extends TestBase {
 	}
 
 	public void enterReminderStartDate(String reminderStartDate) {
-		calendar.selectDateNew(reminderStartDateField, reminderStartDate);
+		calendar.selectDate(reminderStartDateField, reminderStartDate);
 	}
 
 	public void enterReminderEndDate(String reminderEndDate) {
-		calendar.selectDateNew(reminderEndDateField, reminderEndDate);
+		calendar.selectDate(reminderEndDateField, reminderEndDate);
 	}
 
 	public void selectReminderType(String reminderType) {		

@@ -6,9 +6,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.cm.qa.utills.Calendar;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class TermPage extends TestBase{
+public class TermPage extends ActionClass{
 
 	Calendar calendar  = new Calendar();
 
@@ -29,15 +29,7 @@ public class TermPage extends TestBase{
 	WebElement startDateField ;
 
 	@FindBy(xpath = "//input[@placeholder='End Date']")
-	WebElement endDateField ;
-
-	/* Contract Term is not auto caculate field
-	 * @FindBy(xpath = "//input[@placeholder='Contract Term']")
-	 * WebElement contractTermField ;
-	 *	
-	 * @FindBy(xpath = "//mat-select[@formcontrolname='contractTermType']")
-	 * WebElement termDurationDropDown ;
-	 */
+	WebElement endDateField ;	
 
 	@FindBy(xpath = "//input[@placeholder='Signed Date']")
 	WebElement signedDateField ;
@@ -45,7 +37,7 @@ public class TermPage extends TestBase{
 	@FindBy(xpath = "//mat-select[@placeholder='Renewal Type']")
 	WebElement renewalTypeDropDown ;
 
-	@FindBy(xpath = "//input[@placeholder='Notice Period for Renewal']")
+	@FindBy(xpath = "//input[contains(@placeholder,'Notice Period')]")
 	WebElement noticePeriodField ;
 
 	@FindBy(xpath = "//mat-select[@formcontrolname='noticePeriodType']")
@@ -60,7 +52,7 @@ public class TermPage extends TestBase{
 	@FindBy(xpath = "//textarea[@placeholder='Description']")
 	WebElement descriptionBox ;
 
-	@FindBy(xpath="//button[contains(text(),'Cancel')]")
+	@FindBy(id="cancel")
 	WebElement termCancelButton ;
 
 	@FindBy(xpath="//button[contains(text(),'Save')]")
@@ -91,15 +83,15 @@ public class TermPage extends TestBase{
 	}
 
 	public void enterStartDate(String startDate) {
-		calendar.selectDateNew(startDateField, startDate);
+		calendar.selectDate(startDateField, startDate);
 	}	
 
 	public void enterEndDate(String endDate) {
-		calendar.selectDateNew(endDateField, endDate);
+		calendar.selectDate(endDateField, endDate);
 	}
 
 	public void enterSignedDate(String signedDate) {
-		calendar.selectDateNew(signedDateField, signedDate);
+		calendar.selectDate(signedDateField, signedDate);
 	}
 
 	public void selectRenewalType(String renewalType) {
@@ -183,8 +175,7 @@ public class TermPage extends TestBase{
 		return this;
 	}
 
-	public TermPage fillTermForm(String termType, String startDate, String signedDate, String endDate, String contractTermValue,
-			String contractTermDuration, String renewalType, String noticePeriodValue, String noticePeriodDuration, String gracePeriodValue,
+	public TermPage fillTermForm(String termType, String startDate, String signedDate, String endDate, String renewalType, String noticePeriodValue, String noticePeriodDuration, String gracePeriodValue,
 			String gracePeriodDuration, String description) {
 		if(termType.equalsIgnoreCase("Fixed Period")) {
 			clickFixedPeriodTab();
@@ -200,6 +191,7 @@ public class TermPage extends TestBase{
 		}
 		else if(termType.equalsIgnoreCase("Fixed Period Without Renewal")) {
 			clickFixedPeriodWithoutRenewalTab();
+			sleep(1000);
 			enterStartDate(startDate);
 			enterSignedDate(signedDate);
 			enterEndDate(endDate);
@@ -209,6 +201,7 @@ public class TermPage extends TestBase{
 		}
 		else if(termType.equalsIgnoreCase("Open Ended")) {
 			clickOpenEndedContractsTab();
+			sleep(1000);
 			enterStartDate(startDate);
 			enterSignedDate(signedDate);
 			enterDescription(description);

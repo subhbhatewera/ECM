@@ -33,25 +33,25 @@ public class ContractListPageTests extends TestBase{
 		uName = new UsernamePage() ;
 		utills = new Utills() ;
 		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
-		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;		
+		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;
+		contractList = dashboard.gotoContractListPage() ;
 	}
 
 	@Test(priority = 14)
 	public void validateAddContractButtonTest() {
-		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnAddContractButton() ;
 		Assert.assertEquals(generalInformation.verifyAddContractHeading(), "Add Contract");
 	}
-
+	
 	@Test(priority = 15, enabled = false)
 	public void validateEditContractIconTest() {
-		contractList = dashboard.gotoContractListPage() ;
 		generalInformation = contractList.clickOnEditContractIcon("BancTec");
 		Assert.assertEquals(generalInformation.verifyEditContractHeading(), "Edit Contract");
 	}
 
 	@AfterClass
 	public void tearDown() {
-		driver.quit();
+		driver.close();
 	}
+
 }

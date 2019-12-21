@@ -5,17 +5,12 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.cm.qa.pages.PasswordPage;
 import com.cm.qa.pages.UsernamePage;
 import com.cm.qa.utills.Utills;
 
 import cm.cm.qa.base.TestBase;
 
 public class UsernamePageTests extends TestBase {
-	
-	UsernamePage uName ;
-	PasswordPage pwd ;
-	Utills utills ;
 	
 	
 	public UsernamePageTests() {
@@ -39,7 +34,13 @@ public class UsernamePageTests extends TestBase {
 	public void blankUsernameTest() {
 		uName.enterUsername("") ;
 		uName.clickNextButton() ;
-		Assert.assertEquals(utills.readErrorMessage(), "Must input username or email!\n" + "Error") ;
+		Assert.assertEquals(utills.readErrorMessage(), "Must Enter User Name\n" + "User name not entered") ;
+	}
+	
+	@Test(priority = 4)
+	public void validUsernameTest() {
+		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
+		Assert.assertTrue(pwd.validateCMImage()) ;
 	}
 	
 	@Test(priority = 3)
@@ -48,14 +49,9 @@ public class UsernamePageTests extends TestBase {
 		Assert.assertEquals(footerText, prop.getProperty("footerText"));
 	}
 	
-	@Test(priority = 4)
-	public void validUsernameTest() {
-		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
-		Assert.assertTrue(pwd.validateCMImage()) ;
-	}	
-	
 	@AfterClass
 	public void tearDown() {
-		driver.quit();
+		driver.close();
 	}
+
 }

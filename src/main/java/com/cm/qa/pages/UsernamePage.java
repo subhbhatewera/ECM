@@ -4,9 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import cm.cm.qa.base.TestBase;
+import cm.cm.qa.base.ActionClass;
 
-public class UsernamePage extends TestBase {
+public class UsernamePage extends ActionClass {
 
 	// Page Factory - OR
 	@FindBy(xpath = "//img[@title='Logo']")
@@ -15,13 +15,13 @@ public class UsernamePage extends TestBase {
 	@FindBy(xpath = "//input[@name='username']")
 	WebElement userNameField ;
 
-	@FindBy(xpath = "//span[contains(text(),'Next')]")
+	@FindBy(xpath = "//button[contains(@class,'loginBtn')]")
 	WebElement nextButton ;
 	
 	@FindBy(xpath = "//p[@class='ng-tns-c2-0']")
 	WebElement footerText ;	
 
-	// Initializing of page objects
+	// Initializing page objects
 	public UsernamePage() {
 		PageFactory.initElements(driver, this);
 	}
