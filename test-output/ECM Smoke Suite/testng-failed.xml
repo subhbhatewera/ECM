@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" guice-stage="DEVELOPMENT" name="Failed suite [ECM Smoke Suite]" parallel="tests">
+  <listeners>
+    <listener class-name="com.cm.extentreportlistner.TestNGListeners"/>
+  </listeners>
+  <test thread-count="2" name="UserName Page Tests(failed)" parallel="tests">
+    <classes>
+      <class name="com.cm.qa.testcases.UsernamePageTests">
+        <methods>
+          <include name="setUp"/>
+          <include name="blankUsernameTest"/>
+          <include name="verifyUserNameScreenFooterText"/>
+          <include name="tearDown"/>
+          <include name="validUsernameTest"/>
+        </methods>
+      </class> <!-- com.cm.qa.testcases.UsernamePageTests -->
+    </classes>
+  </test> <!-- UserName Page Tests(failed) -->
+</suite> <!-- Failed suite [ECM Smoke Suite] -->

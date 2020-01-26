@@ -1,20 +1,19 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 28.057 sec <<< FAILURE! - in TestSuite
-blankUsernameTest(com.cm.qa.testcases.UsernamePageTests)  Time elapsed: 1.005 sec  <<< FAILURE!
-java.lang.AssertionError: 
-expected [Must input username or email!
-Error] but found [Must Enter User Name
-User name not entered]
-	at com.cm.qa.testcases.UsernamePageTests.blankUsernameTest(UsernamePageTests.java:42)
-
-verifyFooterText(com.cm.qa.testcases.UsernamePageTests)  Time elapsed: 0.098 sec  <<< FAILURE!
-java.lang.AssertionError: 
-expected [Copyright © 2019 Exela Contract Management.
-All Rights Reserved.
-v0.0.8] but found [Copyright © 2019 Exela Contract Management.
-All Rights Reserved.
-v0.0.9]
-	at com.cm.qa.testcases.UsernamePageTests.verifyFooterText(UsernamePageTests.java:48)
+Tests run: 26, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 659.267 s <<< FAILURE! - in TestSuite
+com.cm.qa.testcases.ProfilePageTests.updateProfilePicture  Time elapsed: 26.649 s  <<< FAILURE!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //div[contains(@class,'toast-success')]' (tried for 10 second(s) with 500 milliseconds interval)
+	at com.cm.qa.testcases.ProfilePageTests.updateProfilePicture(ProfilePageTests.java:37)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//div[contains(@class,'toast-success')]"}
+  (Session info: chrome=79.0.3945.117)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'SBR-DEVPQA-12', ip: '10.182.106.119', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_112'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 79.0.3945.117, chrome: {chromedriverVersion: 79.0.3945.36 (3582db32b3389..., userDataDir: C:\Users\SUBHAS~1.BHA\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:52593}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: cfba57b3c3a816652ca40c7310af22d7
+*** Element info: {Using=xpath, value=//div[contains(@class,'toast-success')]}
+	at com.cm.qa.testcases.ProfilePageTests.updateProfilePicture(ProfilePageTests.java:37)
 

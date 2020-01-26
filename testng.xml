@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Exela Contract Management Automation Suite">
+	<test name="Login Tests">
+		<classes>
+			<class name="com.cm.qa.testcases.UsernamePageTests" />
+			<class name="com.cm.qa.testcases.PasswordPageTests" />
+		</classes>
+	</test>
+	<test name="Dashboard Tests">
+		<classes>
+			<class name="com.cm.qa.testcases.DashboardPageTests" />
+			<class name="com.cm.qa.testcases.ContractListPageTests" />
+			<class name="com.cm.qa.testcases.ProfilePageTests" />
+		</classes>
+	</test>
+<!-- 	<test name="Add-Edit Contract Tests">
+		<classes>
+			<class name="com.cm.qa.testcases.GeneralInformationPageTests" />
+			<class name="com.cm.qa.testcases.TermPageTests" />
+			<class name="com.cm.qa.testcases.CommercialsPageTests" />
+			<class name="com.cm.qa.testcases.OtherCommercialTermsPageTests" />
+			<class name="com.cm.qa.testcases.SLAPageTests" />
+			<class name="com.cm.qa.testcases.ContactPersonsPageTests" />
+			<class name="com.cm.qa.testcases.DocumentsPageTests" />
+			<class name="com.cm.qa.testcases.NotificationPageTests" />
+		</classes>
+	</test>
+	<test name="Add-Edit Notifications Tests">
+		<classes>
+			<class name="com.cm.qa.testcases.NotificationPageTests" />
+		</classes>
+	</test> -->
+</suite>

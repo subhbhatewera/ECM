@@ -55,8 +55,8 @@ public class DashboardPage extends ActionClass{
 	public ContractListPage clickOnContractListLink() {
 		sleep(3000);
 		clickElement(toggleIcon);
-		clickElement(contractsLink);
-		clickElement(contractsListLink);
+		clickElementUsingJS(contractsLink);
+		clickElementUsingJS(contractsListLink);
 		return new ContractListPage() ;
 	}
 	
@@ -67,8 +67,8 @@ public class DashboardPage extends ActionClass{
 
 	public DocSearchPage clickOnDosSearchLink() {
 		clickElement(toggleIcon);
-		clickElement(contractsLink);
-		clickElement(docSearchLink);
+		clickElementUsingJS(contractsLink);
+		clickElementUsingJS(docSearchLink);
 		return new DocSearchPage() ;
 	}
 	
@@ -83,6 +83,7 @@ public class DashboardPage extends ActionClass{
 	}
 
 	public void openUserNavigationMenu() {
+		sleep(4000);
 		customVisibleWait(userNavigationMenu);
 		userNavigationMenu.click();
 	}

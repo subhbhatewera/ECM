@@ -14,30 +14,34 @@ public class ProfilePage extends ActionClass{
 	@FindBy(xpath = "//label[@class='camera-icon']")
 	WebElement cameraIcon ;
 
-	@FindBy(xpath = "//button[text()='Edit']")
+	@FindBy(xpath = "//button[@id='editButton']")
 	WebElement editButton ;
 
 	@FindBy(xpath = "//input[@placeholder='First Name']")
-	WebElement firstNameField ;
+	public WebElement firstNameField ;
 
 	@FindBy(xpath = "//input[@placeholder='Last Name']")
-	WebElement lastNameField ;
+	public WebElement lastNameField ;
 
-	@FindBy(xpath = "//button[text()='Update']")
+	@FindBy(css = "[id='updateButton']")
 	WebElement updateButton ;
+	
+	@FindBy(css = "[id='cancel']")
+	WebElement cancelButton ;
 
 	public ProfilePage() {
 		PageFactory.initElements(driver, this);
 	}
 
-	public ProfilePage changeProfilePicture(String imagePath) {
+	public ProfilePage changeProfilePicture() {
 		clickElement(cameraIcon);
-		uploadFile(imagePath);
+		System.out.println(projectpath+"\\src\\main\\java\\resources\\profilepicture.jpg");
+		uploadFile(projectpath+"\\src\\main\\java\\resources\\profilepicture.jpg");
 		return this ;
 	}
 
 	public ProfilePage clickOnEditButton() {
-		clickElement(editButton);
+		clickElementUsingJS(editButton);
 		return this;
 	}
 
@@ -53,6 +57,11 @@ public class ProfilePage extends ActionClass{
 
 	public ProfilePage clickOnUpdateButton() {
 		clickElement(updateButton);
+		return this;
+	}
+	
+	public ProfilePage clickOnCancelButton() {
+		clickElementUsingJS(cancelButton);
 		return this;
 	}
 	

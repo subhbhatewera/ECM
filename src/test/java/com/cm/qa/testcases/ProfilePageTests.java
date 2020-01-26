@@ -1,15 +1,12 @@
 package com.cm.qa.testcases;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-
-import com.cm.qa.pages.DashboardPage;
-
-import com.cm.qa.pages.PasswordPage;
-import com.cm.qa.pages.ProfilePage;
 import com.cm.qa.pages.UsernamePage;
 import com.cm.qa.utills.DataProviderClass;
 import com.cm.qa.utills.Utills;
@@ -17,76 +14,71 @@ import com.cm.qa.utills.Utills;
 import cm.cm.qa.base.TestBase;
 
 public class ProfilePageTests extends TestBase{
+	
+	Logger logger = LogManager.getLogger(ProfilePageTests.class.getName());
 
-	UsernamePage uName ;
-	PasswordPage pwd ;
-	Utills utills ;
-	DashboardPage dashboard ;
-	ProfilePage profile;
-
-	public ProfilePageTests() {
-		super() ;
-	}
-
-	@BeforeMethod
+	@BeforeClass
 	public void setUp() {
 		initializeBrowser() ;
+		logger.info(browserName+" browser opened successfully");
 		uName = new UsernamePage() ;
 		utills = new Utills() ;
 		pwd = uName.navigateToPasswordPage(prop.getProperty("clientUser")) ;
+		logger.info("Navigated to Password screen");
 		dashboard = pwd.login(prop.getProperty("clientUserPassword")) ;
+		logger.info("Logged into application");
 		profile = dashboard.gotoProfilePage();
+		logger.info("Navigated to Profile screen");
 	}
 
 	@Test(priority = 101)
 	public void updateProfilePicture() {
-		profile.changeProfilePicture("C:\\Users\\subhash.bhatewera\\Pictures\\n.jpg");
-		//	profile.changeProfilePicture("C:\\Users\\subhash.bhatewera\\Desktop\\forgot-bg.png");
-		Assert.assertEquals(utills.readSuccessMessage(), "User profile updated successfully");
+		profile.changeProfilePicture();
+		Assert.assertEquals(utills.readSuccessMessage(), "Profile Image updated\n" + "Operation Complete");
+		logger.info("Profile picture chages successfully");
 
-	}
-
-	@Test(priority = 102)
-	public void blankFirstNameTest() {
-		profile.clickOnEditButton()
-		.enterFirstName("")
-		.clickOnUpdateButton();
-		Assert.assertEquals(utills.readFieldErrorMessage(), "First Name is required");
-	}
-
-	@Test(priority = 103)
-	public void blankLastNameTest() {
-		profile.clickOnEditButton()
-		.enterLastName("")
-		.clickOnUpdateButton();
-		Assert.assertEquals(utills.readFieldErrorMessage(), "Last Name is required");
-	}
+	}	
 
 	@Test(priority = 104, dataProvider = "invalidName", dataProviderClass = DataProviderClass.class)
 	public void invalidFirstNameTest(String name) {
-		profile.clickOnEditButton()
-		.enterFirstName(name)
-		.clickOnUpdateButton();
+		profile.clickOnEditButton();
+		logger.debug("Clicked on Edit button");
+		profile.enterFirstName(name);
+		logger.debug("Entered First name");
+		profile.clickOnUpdateButton();
+		logger.debug("Clicked on Update button");
 		Assert.assertEquals(utills.readFieldErrorMessage(), "Incorrect data, Alphanumeric values with only Special characters _ ' and spaces are allowed");
+		logger.info("Validated validation for invalid first name");
+		profile.clickOnCancelButton();
+		logger.debug("Clicked on Cancel button");
 	}
 
 	@Test(priority = 105, dataProvider = "invalidName", dataProviderClass = DataProviderClass.class)
 	public void invalidLastNameTest(String name) {
-		profile.clickOnEditButton()
-		.enterLastName(name)
-		.clickOnUpdateButton();
+		profile.clickOnEditButton();
+		logger.debug("Clicked on Edit button");
+		profile.enterLastName(name);
+		logger.debug("Entered Last name");
+		profile.clickOnUpdateButton();
+		logger.debug("Clicked on Update button");
 		Assert.assertEquals(utills.readFieldErrorMessage(), "Incorrect data, Alphanumeric values with only Special characters _ ' and spaces are allowed");
+		logger.info("Validated validation for invalid  Last name");
+		profile.clickOnCancelButton();
+		logger.debug("Clicked on Cancel button");
 	}	
 
 	@Test(priority = 106, dataProvider = "userName", dataProviderClass = DataProviderClass.class)
 	public void updateUserNameTest(String firstName, String lastName) {
-		profile.clickOnEditButton()
-		.updateUserName(firstName, lastName);
-		Assert.assertEquals(utills.readSuccessMessage(), "User profile updated successfully");
+		profile.clickOnEditButton();
+		logger.debug("Clicked on Edit button");
+		profile.updateUserName(firstName, lastName);
+		Assert.assertEquals(utills.readSuccessMessage(), "User Profile Updated Successfully\n" + "Operation Complete");
+		logger.info("Updated Username");
 		Assert.assertEquals(profile.getUserName(firstName +" "+lastName), firstName +" "+lastName);
+		logger.info("Validated correct username is displayed after updating username");
 	}	
 
-	@AfterMethod
+	@AfterClass
 	public void tearDown() {
 		driver.close();
 	}

@@ -20,21 +20,27 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ActionClass extends TestBase{
-
+	
 	public void customVisibleWait(WebElement element) {
-		wait = new WebDriverWait(driver, 20) ;
+		wait = new WebDriverWait(driver, 10) ;
 		wait.ignoring(StaleElementReferenceException.class).until(ExpectedConditions.visibilityOf(element)) ;
 	}
 
 	public void customClickableWait(WebElement element) {
-		wait = new WebDriverWait(driver, 20) ;
+		wait = new WebDriverWait(driver, 10) ;
 		wait.ignoring(StaleElementReferenceException.class).until(ExpectedConditions.elementToBeClickable(element)) ;
 	}
 
 	public void writeText(WebElement element, String value) {
-		customVisibleWait(element) ;
+		customVisibleWait(element) ;		
 		element.clear() ;
-		element.sendKeys(value) ;
+		element.sendKeys(value) ;		
+	}
+	
+	public void clearTextField(WebElement element) {
+		customVisibleWait(element);
+		element.clear();
+		sleep(1000);
 	}
 
 	public void searchTableData(String path, String userOption) {

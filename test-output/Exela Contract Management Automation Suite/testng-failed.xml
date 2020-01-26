@@ -8,33 +8,61 @@
     <classes>
       <class name="com.cm.qa.testcases.CommercialsPageTests">
         <methods>
-          <include name="addFixedFeeTest" invocation-numbers="0 1"/>
-          <include name="setUp"/>
-          <include name="editFixedFeeTest" invocation-numbers="0"/>
+          <include name="editFixedFeeTest"/>
+          <include name="deleteTransactionRateVolumeTest"/>
           <include name="tearDown"/>
-          <include name="addTimeAndMaterialModelTest" invocation-numbers="0"/>
-          <include name="editTransactionRateVolumeTest" invocation-numbers="0"/>
+          <include name="addTimeAndMaterialModelTest"/>
+          <include name="copyMinimumBillingTest"/>
+          <include name="editTimeAndMaterialModelTest"/>
+          <include name="addProjectTest"/>
+          <include name="copyTransactionRateVolumeTest"/>
+          <include name="addGeneralTermsTest"/>
+          <include name="deleteFixedFeeTest"/>
+          <include name="editTransactionRateVolumeTest"/>
+          <include name="copyFixedFeeTest"/>
+          <include name="copyTransactionRateStandardTest"/>
+          <include name="addUOMTest"/>
+          <include name="deleteTransactionRateStandardTest"/>
           <include name="openGeneralInformationForm"/>
-          <include name="addTransactionRateVolumeTest" invocation-numbers="0"/>
-          <include name="addMinimumBillingTest" invocation-numbers="0 1"/>
-          <include name="editTimeAndMaterialModelTest" invocation-numbers="0"/>
-          <include name="editMinimumBillingTest" invocation-numbers="0"/>
+          <include name="deleteTimeAndMaterialModelTest"/>
+          <include name="editMinimumBillingTest"/>
+          <include name="addFixedFeeTest"/>
+          <include name="setUp"/>
+          <include name="addSubServiceTest"/>
+          <include name="deleteMinimumBillingTest"/>
+          <include name="addTransactionRateVolumeTest"/>
+          <include name="copyTimeAndMaterialModelTest"/>
+          <include name="addMinimumBillingTest"/>
+          <include name="addServiceTest"/>
+          <include name="addLinkedOpportunityTest"/>
+          <include name="addTransactionRateStandardTest"/>
+          <include name="editTransactionRateStandardTest"/>
         </methods>
       </class> <!-- com.cm.qa.testcases.CommercialsPageTests -->
-      <class name="com.cm.qa.testcases.SLAPageTests">
+      <class name="com.cm.qa.testcases.GeneralInformationPageTests">
         <methods>
+          <include name="duplicateSubCategoryNameTest"/>
           <include name="setUp"/>
+          <include name="duplicateCategoryNameTest"/>
+          <include name="openGeneralInformationForm"/>
           <include name="tearDown"/>
-          <include name="addTATTest" invocation-numbers="2"/>
         </methods>
-      </class> <!-- com.cm.qa.testcases.SLAPageTests -->
+      </class> <!-- com.cm.qa.testcases.GeneralInformationPageTests -->
       <class name="com.cm.qa.testcases.OtherCommercialTermsPageTests">
         <methods>
           <include name="setUp"/>
+          <include name="addCOLATest" invocation-numbers="0"/>
           <include name="tearDown"/>
-          <include name="addEarlyPaymentDiscountTest" invocation-numbers="0 1 2"/>
         </methods>
       </class> <!-- com.cm.qa.testcases.OtherCommercialTermsPageTests -->
+      <class name="com.cm.qa.testcases.DocumentsPageTests">
+        <methods>
+          <include name="addDocument" invocation-numbers="0"/>
+          <include name="openDocumentsForm"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.cm.qa.testcases.DocumentsPageTests -->
     </classes>
   </test> <!-- Regression Test Cases(failed) -->
 </suite> <!-- Failed suite [Exela Contract Management Automation Suite] -->
