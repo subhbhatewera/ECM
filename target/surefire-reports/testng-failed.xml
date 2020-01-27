@@ -1,15 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Exela Contract Management Automation Suite]">
+  <test thread-count="5" verbose="0" name="Login Tests(failed)">
+    <classes>
+      <class name="com.cm.qa.testcases.PasswordPageTests">
+        <methods>
+          <include name="verifyPasswordScreenFooterTextTest"/>
+          <include name="tearDown"/>
+          <include name="verifyUsernameLabelTest"/>
+          <include name="blankPasswordTest"/>
+          <include name="validPasswordTest"/>
+          <include name="setUp"/>
+          <include name="invalidPasswordTest"/>
+        </methods>
+      </class> <!-- com.cm.qa.testcases.PasswordPageTests -->
+      <class name="com.cm.qa.testcases.UsernamePageTests">
+        <methods>
+          <include name="setUp"/>
+          <include name="blankUsernameTest"/>
+          <include name="verifyUserNameScreenFooterText"/>
+          <include name="usernameScreenCMLogoImageTest"/>
+          <include name="tearDown"/>
+          <include name="validUsernameTest"/>
+        </methods>
+      </class> <!-- com.cm.qa.testcases.UsernamePageTests -->
+    </classes>
+  </test> <!-- Login Tests(failed) -->
   <test thread-count="5" verbose="0" name="Dashboard Tests(failed)">
     <classes>
       <class name="com.cm.qa.testcases.ProfilePageTests">
         <methods>
           <include name="tearDown"/>
+          <include name="invalidLastNameTest"/>
           <include name="setUp"/>
           <include name="updateProfilePicture"/>
+          <include name="updateUserNameTest"/>
+          <include name="invalidFirstNameTest"/>
         </methods>
       </class> <!-- com.cm.qa.testcases.ProfilePageTests -->
+      <class name="com.cm.qa.testcases.ContractListPageTests">
+        <methods>
+          <include name="validateAddContractButtonTest"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.cm.qa.testcases.ContractListPageTests -->
+      <class name="com.cm.qa.testcases.DashboardPageTests">
+        <methods>
+          <include name="validateNotificationLinkTest"/>
+          <include name="verifyLandingPageTest"/>
+          <include name="validateContractListLinkTest"/>
+          <include name="tearDown"/>
+          <include name="validateDocSearchLinkTest"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.cm.qa.testcases.DashboardPageTests -->
     </classes>
   </test> <!-- Dashboard Tests(failed) -->
 </suite> <!-- Failed suite [Exela Contract Management Automation Suite] -->

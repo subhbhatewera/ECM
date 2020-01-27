@@ -1,19 +1,24 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 26, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 659.267 s <<< FAILURE! - in TestSuite
-com.cm.qa.testcases.ProfilePageTests.updateProfilePicture  Time elapsed: 26.649 s  <<< FAILURE!
-org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //div[contains(@class,'toast-success')]' (tried for 10 second(s) with 500 milliseconds interval)
-	at com.cm.qa.testcases.ProfilePageTests.updateProfilePicture(ProfilePageTests.java:37)
-Caused by: org.openqa.selenium.NoSuchElementException: 
-no such element: Unable to locate element: {"method":"xpath","selector":"//div[contains(@class,'toast-success')]"}
-  (Session info: chrome=79.0.3945.117)
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
-System info: host: 'SBR-DEVPQA-12', ip: '10.182.106.119', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_112'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 79.0.3945.117, chrome: {chromedriverVersion: 79.0.3945.36 (3582db32b3389..., userDataDir: C:\Users\SUBHAS~1.BHA\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:52593}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
-Session ID: cfba57b3c3a816652ca40c7310af22d7
-*** Element info: {Using=xpath, value=//div[contains(@class,'toast-success')]}
-	at com.cm.qa.testcases.ProfilePageTests.updateProfilePicture(ProfilePageTests.java:37)
+Tests run: 36, Failures: 5, Errors: 0, Skipped: 31, Time elapsed: 7.944 s <<< FAILURE! - in TestSuite
+com.cm.qa.testcases.UsernamePageTests.setUp  Time elapsed: 4.711 s  <<< FAILURE!
+java.lang.NullPointerException
+	at com.cm.qa.testcases.UsernamePageTests.setUp(UsernamePageTests.java:22)
+
+com.cm.qa.testcases.PasswordPageTests.setUp  Time elapsed: 4.729 s  <<< FAILURE!
+java.lang.NullPointerException
+	at com.cm.qa.testcases.PasswordPageTests.setUp(PasswordPageTests.java:21)
+
+com.cm.qa.testcases.DashboardPageTests.setUp  Time elapsed: 4.955 s  <<< FAILURE!
+java.lang.NullPointerException
+	at com.cm.qa.testcases.DashboardPageTests.setUp(DashboardPageTests.java:21)
+
+com.cm.qa.testcases.ContractListPageTests.setUp  Time elapsed: 4.957 s  <<< FAILURE!
+java.lang.NullPointerException
+	at com.cm.qa.testcases.ContractListPageTests.setUp(ContractListPageTests.java:21)
+
+com.cm.qa.testcases.ProfilePageTests.setUp  Time elapsed: 4.958 s  <<< FAILURE!
+java.lang.NullPointerException
+	at com.cm.qa.testcases.ProfilePageTests.setUp(ProfilePageTests.java:22)
 
